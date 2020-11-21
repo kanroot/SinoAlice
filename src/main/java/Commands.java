@@ -17,7 +17,7 @@ public class Commands extends ListenerAdapter {
 
         String opc = args[0].toUpperCase();
         switch (opc) {
-            case "!HELP":
+            case "!HELPER":
                 help(event);
                 break;
             case "!INFO":
@@ -246,7 +246,7 @@ public class Commands extends ListenerAdapter {
         helper.setTitle("Helper");
         helper.setImage("https://i.redd.it/lljcy3vj9ei51.png");
         helper.setDescription("**All commands:**"
-                + "\n" + "```!help```"
+                + "\n" + "```!helper```"
                 + "```!info```"
                 + "```!nightmares [all/Pattern to find]```"
                 + "```!searchN [number / nightmare's name]```"
@@ -264,7 +264,7 @@ public class Commands extends ListenerAdapter {
                 + "```!storyA [name of skill]```"
                 + "```!setEfect [name of skill]```"
         );
-        helper.addField("!help", "```Show all commands.```", false);
+        helper.addField("!helper", "```Show all commands.```", false);
         helper.addField("!info", "```Show all information of bot.```", false);
         helper.addField("!nightmares", "```Show all nightmares and it's number or matched with a user input."
                 + "\n" + "Examples:"
