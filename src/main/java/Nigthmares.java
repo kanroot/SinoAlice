@@ -218,6 +218,12 @@ public class Nigthmares {
         return (s.substring(initialpos + 1, lastpos));
     }
 
+    public String extraerCard(String s) {
+        int initialpos = s.indexOf("/CardS");
+        int postfinal = s.indexOf("\">", initialpos);
+        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_nightmares/" + s.substring(initialpos, postfinal));
+    }
+
     public HashMap<String, String> crearDic(String nightmare) {
         //UNICO DICCIONARIO
         //COLECCION DE LLAVES Y VALORES
@@ -246,6 +252,7 @@ public class Nigthmares {
         var duration = extraerTimeDuration(nightmare);
         var nameStorySkill = extraerStorySkill(nightmare);
         var nameColo = extraerNameColo(nightmare);
+        var img = extraerCard(nightmare);
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
         dicNightmare.put("NOMBRE", nombre);
         dicNightmare.put("PATK", pAtk);
@@ -272,6 +279,7 @@ public class Nigthmares {
         dicNightmare.put("MATKTTDEF", matkttdef);
         dicNightmare.put("TIME", time);
         dicNightmare.put("DURATION", duration);
+        dicNightmare.put("IMG",img);
         return dicNightmare;
     }
 

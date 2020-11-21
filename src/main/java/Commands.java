@@ -552,6 +552,7 @@ public class Commands extends ListenerAdapter {
     private void pestanaNightmare(MessageReceivedEvent event, HashMap<String, String> point) {
         EmbedBuilder j = new EmbedBuilder();
         j.setTitle(String.valueOf(point.get("NOMBRE")));
+        j.setImage(point.get("IMG"));
         j.setDescription(
                 "**Story skill**:" + "```fix" + "\n" + point.get("NAMESTORY") + ": "
                         + point.get("SKILL") + "```" + "\n" +
@@ -614,6 +615,7 @@ public class Commands extends ListenerAdapter {
     private void pestanaWeapons(MessageReceivedEvent event, HashMap<String, String> buscado) {
         EmbedBuilder showWeapon = new EmbedBuilder();
         showWeapon.setTitle(buscado.get("NOMBRE"));
+        showWeapon.setImage(buscado.get("IMG"));
         showWeapon.setDescription("**Colosseum  skill**: " + "```fix" + "\n" + buscado.get("NAMECOLO") + ": " + buscado.get("SKILL") + "```"
                 + "\n" + "**Colosseum Aid Skill**: " + "```fix" + "\n" + buscado.get("AID") + ": " + buscado.get("COLOSKILL") + "```" + "\n"
                 + "**Level**: " + buscado.get("LVL") + "```ELM"

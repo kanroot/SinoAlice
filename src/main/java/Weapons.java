@@ -68,10 +68,9 @@ public class Weapons {
 
     }
     public String extraerCard(String s) {
-        int initialpos = s.indexOf("CardS");
+        int initialpos = s.indexOf("/CardS");
         int postfinal = s.indexOf("\">", initialpos);
-        System.out.println("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_armor/" + s.substring(initialpos, postfinal));
-        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_armor/" + s.substring(initialpos, postfinal));
+        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_weapons/" + s.substring(initialpos, postfinal));
     }
 
     public String extraerPatk(String s) {
@@ -206,6 +205,7 @@ public class Weapons {
         var coloSkill = extraerSkillcolo(weapons);
         var nameColoSkill = extraerNameColo(weapons);
         var aidskill = extraerCAid(weapons);
+        var img = extraerCard(weapons);
 
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
         dicWeapon.put("NOMBRE", nombre);
@@ -225,6 +225,7 @@ public class Weapons {
         dicWeapon.put("NAMECOLO", nameColoSkill);
         dicWeapon.put("ELEMENT", element);
         dicWeapon.put("AID",aidskill);
+        dicWeapon.put("IMG",img);
         return dicWeapon;
     }
 
