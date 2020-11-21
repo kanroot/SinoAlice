@@ -584,9 +584,9 @@ public class Commands extends ListenerAdapter {
     }
 
     private void pestanaArmor(MessageReceivedEvent event, HashMap<String, String> armor) {
-        File file = new File(armor.get("IMG"));
         EmbedBuilder ar = new EmbedBuilder();
         ar.setTitle(String.valueOf(armor.get(keyNombre)));
+        ar.setImage(armor.get("IMG"));
         ar.setDescription("**Story skill**: " + "```fix" + "\n" + armor.get("NAMESKILL") + ": " + armor.get("SKILL") + "```"
                 + "\n" + "**Set  effect**: " + "```fix" + "\n" + armor.get("NAMECOLO") + ": " + armor.get("COLOSKILL") + "```"
                 + "```ELM" + "\n" + "Element: " + armor.get("ELEMENT")
