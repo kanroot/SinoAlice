@@ -139,7 +139,7 @@ public class Armors {
     //img
 
     public String extraerCard(String s) {
-        int initialpos = s.indexOf("CardS",0);
+        int initialpos = s.indexOf("CardS");
         int postfinal = s.indexOf("\">", initialpos);
         System.out.println("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_armor/" + s.substring(initialpos, postfinal));
         return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_armor/" + s.substring(initialpos, postfinal));
