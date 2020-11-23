@@ -321,22 +321,22 @@ public class Commands extends ListenerAdapter {
                 "\n!StoryN Song of Camaraderie (II)" +
                 "\n!StoryN Engulfing```", false);
         helper.addField("!coloN", "```Show all nightmares with the Colosseum Skill searched."
-                + "\n" + "\nExamples:" + "\n!ColoSkill Zephyr Fairy Mastery (II)" +
+                + "\n" + "\nExamples:" + "\n!coloN Zephyr Fairy Mastery (II)" +
                 "\n!coloN Zephyr" +
                 "\n!coloN Tidal Fairy Master (I)" +
                 "\n!coloN Tidal Fairy```", false);
         helper.addField("!aidW", "```Show all weapons with the aid Skill searched."
-                + "\n" + "\nExamples:" + "\n!StoryN Blazing Wildfire (I)" +
+                + "\n" + "\nExamples:" + "\n!aidW Blazing Wildfire (I)" +
                 "\n!aidW M.ATK Debuff (I)" +
                 "\n!aidW Replenish Magic (I)" +
                 "\n!aidW Support```", false);
         helper.addField("!coloW", "```Show all weapons with the Colosseum Skill searched."
-                + "\n" + "\nExamples:" + "\n!ColoSkill Zephyr Fairy Mastery (II)" +
+                + "\n" + "\nExamples:" + "\n!coloW Zephyr Fairy Mastery (II)" +
                 "\n!coloW Torrent of Destruction (III)" +
                 "\n!coloW Blessed Gospel (III)" +
                 "\n!coloW Wave```", false);
         helper.addField("!storyA", "```Show all armor with the Story Skill searched."
-                + "\n" + "\nExamples:" + "\n!StoryN Blazing Wildfire (I)" +
+                + "\n" + "\nExamples:" + "\n!StoryA Blazing Wildfire (I)" +
                 "\n!StoryA Instrument Merit" +
                 "\n!StoryA Ranged Water Soul" +
                 "\n!StoryA Ranged Water Soul```", false);
