@@ -31,7 +31,6 @@ public class Nigthmares {
 
     //nivel base
     public String extraerUnNom(String e) {
-
         int reference = e.lastIndexOf("enname");
         int initialpos = e.indexOf("\">", reference);
         int lastpos = e.indexOf("</a>", initialpos);

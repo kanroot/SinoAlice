@@ -12,7 +12,7 @@ public class Armors {
     }
 
     private String[] leertxt() {
-        String s2 = "</div></div></td></tr><tr><td class=\"colCompare\">";
+        String s2 = "<div></div></div></div></body></html>";
         String lineaI = "";
         String[] e;
         try {
@@ -180,7 +180,6 @@ public class Armors {
 
     public void generarArmor() {
         var leer = leertxt();
-
         for (String s : leer) {
             var valores = crearDic(s);
             armor.add(valores);

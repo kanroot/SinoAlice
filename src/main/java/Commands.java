@@ -43,7 +43,7 @@ public class Commands extends ListenerAdapter {
                 searchNightmare(event, name.toString());
                 break;
             case "!MAXN":
-                var point = Main.valor.point();
+                var point = Main.pesadillas.point();
                 for (HashMap<String, String> stringStringHashtable : point) {
                     pestanaNightmare(event, stringStringHashtable);
                 }
@@ -155,7 +155,7 @@ public class Commands extends ListenerAdapter {
                         nameS.append(args[i].toUpperCase()).append(" ");
                     }
                     nameS.deleteCharAt(nameS.lastIndexOf(" "));
-                    var buscado = Main.valor.storySkill(nameS.toString());
+                    var buscado = Main.pesadillas.storySkill(nameS.toString());
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         pestanaNightmare(event, stringStringHashMap);
                     }
@@ -168,7 +168,7 @@ public class Commands extends ListenerAdapter {
                         nameC.append(args[i].toUpperCase()).append(" ");
                     }
                     nameC.deleteCharAt(nameC.lastIndexOf(" "));
-                    var buscado = Main.valor.coloSkill(nameC.toString());
+                    var buscado = Main.pesadillas.coloSkill(nameC.toString());
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         pestanaNightmare(event, stringStringHashMap);
                     }
@@ -222,6 +222,19 @@ public class Commands extends ListenerAdapter {
                         pestanaArmor(event, stringStringHashMap);
                     }
                 }
+            case "!CLASS":
+                if (args.length == 2) {
+                    var buscado = Main.pjs.find(args[1].toUpperCase());
+                    for (HashMap<String, String> stringStringHashMap : buscado) {
+                        pestanaClass(event, stringStringHashMap);
+                    }
+                }
+                if (args.length == 3) {
+                    var buscado = Main.pjs.find(args[1].toUpperCase(), args[2].toUpperCase());
+                    for (HashMap<String, String> stringStringHashMap : buscado) {
+                        pestanaClass(event, stringStringHashMap);
+                    }
+                }
         }
     }
 
@@ -252,7 +265,7 @@ public class Commands extends ListenerAdapter {
                 + "```!searchN [number / nightmare's name]```"
                 + "```!maxN```"
                 + "```!armors [all/Pattern to find]```"
-                + "```!searchA [umber / Armor's name]```"
+                + "```!searchA [number / Armor's name]```"
                 + "```!arm [element][Type](Stat)(number of elements)(optional)```"
                 + "```!weapons [all/Pattern to find]```"
                 + "```!searchW [number / Weapon's name]```"
@@ -358,8 +371,8 @@ public class Commands extends ListenerAdapter {
         StringBuilder nombres = new StringBuilder();
         int contador = 0;
         int color = 0;
-        for (int i = 0; i < Main.valor.night.size(); i++) {
-            nombres.append("**").append(i + 1).append("**").append(". ").append(Main.valor.night.get(i).get(keyNombre)).
+        for (int i = 0; i < Main.pesadillas.night.size(); i++) {
+            nombres.append("**").append(i + 1).append("**").append(". ").append(Main.pesadillas.night.get(i).get(keyNombre)).
                     append("\n");
             contador++;
             if (contador == 50) {
@@ -393,9 +406,9 @@ public class Commands extends ListenerAdapter {
 
     public void nightmarepattern(MessageReceivedEvent event, String buscado) {
         StringBuilder nombres = new StringBuilder();
-        for (int i = 0; i < Main.valor.night.size(); i++) {
-            if (Main.valor.night.get(i).get("NOMBRE").contains(buscado.toUpperCase())) {
-                nombres.append("**").append(i + 1).append("**").append(". ").append(Main.valor.night.get(i).get(keyNombre)).append("\n");
+        for (int i = 0; i < Main.pesadillas.night.size(); i++) {
+            if (Main.pesadillas.night.get(i).get("NOMBRE").contains(buscado.toUpperCase())) {
+                nombres.append("**").append(i + 1).append("**").append(". ").append(Main.pesadillas.night.get(i).get(keyNombre)).append("\n");
             }
         }
         EmbedBuilder armor = new EmbedBuilder();
@@ -408,11 +421,11 @@ public class Commands extends ListenerAdapter {
 
     private void searchNightmare(MessageReceivedEvent event, String arg) {
         try {
-            var point = Main.valor.buscar(Integer.parseInt(arg));
+            var point = Main.pesadillas.buscar(Integer.parseInt(arg));
             pestanaNightmare(event, point);
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            var point = Main.valor.buscar(arg);
+            var point = Main.pesadillas.buscar(arg);
             pestanaNightmare(event, point);
         }
     }
@@ -645,6 +658,28 @@ public class Commands extends ListenerAdapter {
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(showWeapon.build()).queue();
 
+    }
+    private void pestanaClass(MessageReceivedEvent event, HashMap<String, String> buscado){
+        EmbedBuilder showClass= new EmbedBuilder();
+        showClass.setTitle(buscado.get("NAME") + "/" + buscado.get("JOB"));
+        showClass.setDescription("**Primary weapon**: " + "```fix" + "\n" + buscado.get("PRIMARY") + "```"
+                + "\n" + "**Usable weapons**: " + "```fix" + "\n" + buscado.get("USABLE") + "```" + "\n"
+                + "**Level 1**: " + "```fix" + "\n" + buscado.get("LVL1") + "```"
+                + "**Level 2**: " + "```fix" + "\n" + buscado.get("LVL2") + "```"
+                + "**Level 3**: " + "```fix" + "\n" + buscado.get("LVL3") + "```"
+                + "**Level 4**: " + "```fix" + "\n" + buscado.get("LVL4") + "```"
+                + "**Level 5**: " + "```fix" + "\n" + buscado.get("LVL5") + "```"
+                + "**Level 6**: " + "```fix" + "\n" + buscado.get("LVL6") + "```"
+                + "**Level 7**: " + "```fix" + "\n" + buscado.get("LVL7") + "```"
+                + "**Level 8**: " + "```fix" + "\n" + buscado.get("LVL8") + "```"
+                + "**Level 9**: " + "```fix" + "\n" + buscado.get("LVL9") + "```"
+                + "**Level 10**: " + "```fix" + "\n" + buscado.get("LVL10") + "```"
+                + "**Level 11**: " + "```fix" + "\n" + buscado.get("LVL11") + "```"
+                + "**Level 12**: " + "```fix" + "\n" + buscado.get("LVL12") + "```");
+
+        showClass.setColor(Color.cyan);
+        event.getChannel().sendTyping().queue();
+        event.getChannel().sendMessage(showClass.build()).queue();
     }
     //endregion
 
