@@ -208,7 +208,8 @@ public class Weapons {
         var img = extraerCard(weapons);
 
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
-        dicWeapon.put("NOMBRE", nombre);
+        dicWeapon.put("NAME", nombre);
+        System.out.println(nombre);
         dicWeapon.put("TYPE", type);
         dicWeapon.put("PATK", Patk);
         dicWeapon.put("PDEF", PDef);

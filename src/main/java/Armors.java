@@ -12,7 +12,7 @@ public class Armors {
     }
 
     private String[] leertxt() {
-        String s2 = "<div></div></div></div></body></html>";
+        String s2 = "</div></div></td></tr><tr><td class=\"colCompare\">";
         String lineaI = "";
         String[] e;
         try {
@@ -163,7 +163,7 @@ public class Armors {
         var settotal = extraerSetTotal(armors);
         var card = extraerCard(armors);
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
-        dicArmor.put("NOMBRE", nombre);
+        dicArmor.put("NAME", nombre);
         dicArmor.put("TYPE", type);
         dicArmor.put("PDEF", PDef);
         dicArmor.put("MDEF", mDef);

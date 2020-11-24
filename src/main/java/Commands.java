@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class Commands extends ListenerAdapter {
 
-    private final String keyNombre = "NOMBRE";
+    private final String keyNombre = "NAME";
 
     public void onMessageReceived(MessageReceivedEvent event) {
         //no lee mensajes propios
@@ -276,6 +276,7 @@ public class Commands extends ListenerAdapter {
                 + "```!coloW [name of skill]```"
                 + "```!storyA [name of skill]```"
                 + "```!setEfect [name of skill]```"
+                + "```!class [name of pj](job)```"
         );
         helper.addField("!helper", "```Show all commands.```", false);
         helper.addField("!info", "```Show all information of bot.```", false);
@@ -353,13 +354,19 @@ public class Commands extends ListenerAdapter {
                 "\n!StoryA Instrument Merit" +
                 "\n!StoryA Ranged Water Soul" +
                 "\n!StoryA Ranged Water Soul```", false);
-        /*
         helper.addField("!setEfect", "```Show all armor with the set effect searched."
                 + "\n" + "\nExamples:" + "\n!ColoSkill Zephyr Fairy Mastery (II)" +
                 "\n!coloA Human Hunter's Soul" +
                 "\n!coloA Hunter's Soul" +
                 "\n!coloA Machine Lifeform and Emil's Hunting Spirit```", false);
-        */
+
+        helper.addField("!class", "```Show jobs with the name's pj and job (Mage/Gunner/Alternative" +
+                "Half-Nightmare/Minstrel/Sorcerer/Cleric/Paladin/Breaker/Invader/Poacher/Crusher)."
+                + "\n" + "\nExamples:" +
+                "\n!class 2b" +
+                "\n!class 2b breaker" +
+                "\n!class alice " +
+                "\n!class alice Alternative```", false);
         helper.setColor(Color.pink);
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(helper.build()).queue();
@@ -407,7 +414,7 @@ public class Commands extends ListenerAdapter {
     public void nightmarepattern(MessageReceivedEvent event, String buscado) {
         StringBuilder nombres = new StringBuilder();
         for (int i = 0; i < Main.pesadillas.night.size(); i++) {
-            if (Main.pesadillas.night.get(i).get("NOMBRE").contains(buscado.toUpperCase())) {
+            if (Main.pesadillas.night.get(i).get(keyNombre).contains(buscado.toUpperCase())) {
                 nombres.append("**").append(i + 1).append("**").append(". ").append(Main.pesadillas.night.get(i).get(keyNombre)).append("\n");
             }
         }
@@ -472,7 +479,7 @@ public class Commands extends ListenerAdapter {
     public void armorsfind(MessageReceivedEvent event, String buscado) {
         StringBuilder nombres = new StringBuilder();
         for (int i = 0; i < Main.armaduras.armor.size(); i++) {
-            if (Main.armaduras.armor.get(i).get("NOMBRE").contains(buscado.toUpperCase())) {
+            if (Main.armaduras.armor.get(i).get("NAME").contains(buscado.toUpperCase())) {
                 nombres.append("**").append(i + 1).append("**").append(". ").append(Main.armaduras.armor.get(i).get(keyNombre)).append("\n");
             }
         }
@@ -533,10 +540,10 @@ public class Commands extends ListenerAdapter {
         }
     }
 
-    public void weaponsfind(MessageReceivedEvent event, String buscado) {
+    public void weaponsfind(MessageReceivedEvent event, String searched) {
         StringBuilder nombres = new StringBuilder();
         for (int i = 0; i < Main.armas.weapons.size(); i++) {
-            if (Main.armas.weapons.get(i).get("NOMBRE").contains(buscado.toUpperCase())) {
+            if (Main.armas.weapons.get(i).get("NAME").contains(searched.toUpperCase())) {
                 nombres.append("**").append(i + 1).append("**").append(". ").
                         append(Main.armas.weapons.get(i).get(keyNombre)).append("\n");
             }
@@ -562,95 +569,93 @@ public class Commands extends ListenerAdapter {
     //endregion
 
     //region pestañas
-    private void pestanaNightmare(MessageReceivedEvent event, HashMap<String, String> point) {
+    private void pestanaNightmare(MessageReceivedEvent event, HashMap<String, String> hashMap) {
         EmbedBuilder j = new EmbedBuilder();
-        j.setTitle(String.valueOf(point.get("NOMBRE")));
-        j.setImage(point.get("IMG"));
+        j.setTitle(String.valueOf(hashMap.get("NAME")));
+        j.setImage(hashMap.get("IMG"));
         j.setDescription(
-                "**Story skill**:" + "```fix" + "\n" + point.get("NAMESTORY") + ": "
-                        + point.get("SKILL") + "```" + "\n" +
-                        "**Colosseum skill**:" + "```fix" + "\n" + point.get("NAMECOLO") + ": " +
-                        point.get("COLOSKILL") + "```" + "\n" +
-                        "**Level**: " + point.get("LVL") + "```ELM"
-                        + "\n" + "P.Atk: " + point.get("PATK")
-                        + "\t" + "P.Atk: " + point.get("PDEF")
-                        + "\t" + "M.Atk: " + point.get("MATK")
-                        + "\t" + "M.Atk: " + point.get("MDEF")
-                        + "\t" + "Total: " + point.get("TOTAL") + "```"
-                        + "\n" + "**Level**: " + point.get("FULLLVL") + "```ELM"
-                        + "\n" + "P.Akt: " + point.get("PAKTOTAL")
-                        + "\t" + "P.Def: " + point.get("FULLDEF")
-                        + "\t" + "Max.ATK: " + point.get("FULLMATK")
-                        + "\t" + "Max.DEF: " + point.get("FULLMDEF")
-                        + "\t" + "Total: " + point.get("TOTALMAXLEV") + "```" + "**Others**" + "```ELM"
-                        + "\n" + "Tt.Atk: " + point.get("TTATK")
-                        + "\t" + "Tt.Def: " + point.get("TTDEF")
-                        + "\t" + "PATK+Tt.Def : " + point.get("PATKTTDEF")
-                        + "\t" + "M.Atk+Tt.Def : " + point.get("MATKTTDEF")
-                        + "\t" + "Time: " + point.get("TIME")
-                        + "\t" + "Duration: " + point.get("DURATION") + "```"
+                "**Story skill**:" + "```fix" + "\n" + hashMap.get("NAMESTORY") + ": "
+                        + hashMap.get("SKILL") + "```" + "\n" +
+                        "**Colosseum skill**:" + "```fix" + "\n" + hashMap.get("NAMECOLO") + ": " +
+                        hashMap.get("COLOSKILL") + "```" + "\n" +
+                        "**Level**: " + hashMap.get("LVL") + "```ELM"
+                        + "\n" + "P.Atk: " + hashMap.get("PATK")
+                        + "\t" + "P.Atk: " + hashMap.get("PDEF")
+                        + "\t" + "M.Atk: " + hashMap.get("MATK")
+                        + "\t" + "M.Atk: " + hashMap.get("MDEF")
+                        + "\t" + "Total: " + hashMap.get("TOTAL") + "```"
+                        + "\n" + "**Level**: " + hashMap.get("FULLLVL") + "```ELM"
+                        + "\n" + "P.Akt: " + hashMap.get("PAKTOTAL")
+                        + "\t" + "P.Def: " + hashMap.get("FULLDEF")
+                        + "\t" + "Max.ATK: " + hashMap.get("FULLMATK")
+                        + "\t" + "Max.DEF: " + hashMap.get("FULLMDEF")
+                        + "\t" + "Total: " + hashMap.get("TOTALMAXLEV") + "```" + "**Others**" + "```ELM"
+                        + "\n" + "Tt.Atk: " + hashMap.get("TTATK")
+                        + "\t" + "Tt.Def: " + hashMap.get("TTDEF")
+                        + "\t" + "PATK+Tt.Def : " + hashMap.get("PATKTTDEF")
+                        + "\t" + "M.Atk+Tt.Def : " + hashMap.get("MATKTTDEF")
+                        + "\t" + "Time: " + hashMap.get("TIME")
+                        + "\t" + "Duration: " + hashMap.get("DURATION") + "```"
         );
-
-
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(j.build()).queue();
     }
 
-    private void pestanaArmor(MessageReceivedEvent event, HashMap<String, String> armor) {
+    private void pestanaArmor(MessageReceivedEvent event, HashMap<String, String> hashMap) {
         EmbedBuilder ar = new EmbedBuilder();
-        ar.setTitle(String.valueOf(armor.get(keyNombre)));
-        ar.setImage(armor.get("IMG"));
-        ar.setDescription("**Story skill**: " + "```fix" + "\n" + armor.get("NAMESKILL") + ": " + armor.get("SKILL") + "```"
-                + "\n" + "**Set  effect**: " + "```fix" + "\n" + armor.get("NAMECOLO") + ": " + armor.get("COLOSKILL") + "```"
-                + "```ELM" + "\n" + "Element: " + armor.get("ELEMENT")
-                + "\t" + "Type: " + armor.get("TYPE")
-                + "\t" + "P.Def: " + armor.get("PDEF")
-                + "\t" + "M.Def: " + armor.get("MDEF")
-                + "\t" + "Total: " + armor.get("TOTAL") + "```" + "```YAML"
-                + "\n" + "Set total: " + armor.get("SETTOTAL") + "```"
+        ar.setTitle(String.valueOf(hashMap.get(keyNombre)));
+        ar.setImage(hashMap.get("IMG"));
+        ar.setDescription("**Story skill**: " + "```fix" + "\n" + hashMap.get("NAMESKILL") + ": " + hashMap.get("SKILL") + "```"
+                + "\n" + "**Set  effect**: " + "```fix" + "\n" + hashMap.get("NAMECOLO") + ": " + hashMap.get("COLOSKILL") + "```"
+                + "```ELM" + "\n" + "Element: " + hashMap.get("ELEMENT")
+                + "\t" + "Type: " + hashMap.get("TYPE")
+                + "\t" + "P.Def: " + hashMap.get("PDEF")
+                + "\t" + "M.Def: " + hashMap.get("MDEF")
+                + "\t" + "Total: " + hashMap.get("TOTAL") + "```" + "```YAML"
+                + "\n" + "Set total: " + hashMap.get("SETTOTAL") + "```"
         );
-        if (armor.get("ELEMENT").equalsIgnoreCase("Fire")) {
+        if (hashMap.get("ELEMENT").equalsIgnoreCase("Fire")) {
             ar.setColor(Color.red);
         }
-        if (armor.get("ELEMENT").equalsIgnoreCase("Wind")) {
+        if (hashMap.get("ELEMENT").equalsIgnoreCase("Wind")) {
             ar.setColor(Color.green);
         }
-        if (armor.get("ELEMENT").equalsIgnoreCase("Water")) {
+        if (hashMap.get("ELEMENT").equalsIgnoreCase("Water")) {
             ar.setColor(Color.blue);
         }
-        if (armor.get("ELEMENT").equalsIgnoreCase("Humans")) {
+        if (hashMap.get("ELEMENT").equalsIgnoreCase("Humans")) {
             ar.setColor(Color.BLACK);
         }
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(ar.build()).queue();
     }
 
-    private void pestanaWeapons(MessageReceivedEvent event, HashMap<String, String> buscado) {
+    private void pestanaWeapons(MessageReceivedEvent event, HashMap<String, String> hashMap) {
         EmbedBuilder showWeapon = new EmbedBuilder();
-        showWeapon.setTitle(buscado.get("NOMBRE"));
-        showWeapon.setImage(buscado.get("IMG"));
-        showWeapon.setDescription("**Colosseum  skill**: " + "```fix" + "\n" + buscado.get("NAMECOLO") + ": " + buscado.get("SKILL") + "```"
-                + "\n" + "**Colosseum Aid Skill**: " + "```fix" + "\n" + buscado.get("AID") + ": " + buscado.get("COLOSKILL") + "```" + "\n"
-                + "**Level**: " + buscado.get("LVL") + "```ELM"
-                + "\n" + "Type: " + buscado.get("TYPE")
-                + "\t" + "P.Atk: " + buscado.get("PATK")
-                + "\t" + "P.Def: " + buscado.get("PDEF")
-                + "\t" + "M.Atk: " + buscado.get("MATK")
-                + "\t" + "M.Def: " + buscado.get("MDEF")
-                + "\t" + "Total: " + buscado.get("TOTAL")
-                + "\t" + "Tt.ATK: " + buscado.get("TTATK")
-                + "\t" + "Tt.Def: " + buscado.get("TTDEF")
-                + "\t" + "PATK+Tt.Def: " + buscado.get("PATKTTDEF")
-                + "\t" + "M.Atk+Tt.Def: " + buscado.get("MATKTTDEF") + "```" + "```YAML"
-                + "\n" + "Element: " + buscado.get("ELEMENT") + "```"
+        showWeapon.setTitle(hashMap.get(keyNombre));
+        showWeapon.setImage(hashMap.get("IMG"));
+        showWeapon.setDescription("**Colosseum  skill**: " + "```fix" + "\n" + hashMap.get("NAMECOLO") + ": " + hashMap.get("SKILL") + "```"
+                + "\n" + "**Colosseum Aid Skill**: " + "```fix" + "\n" + hashMap.get("AID") + ": " + hashMap.get("COLOSKILL") + "```" + "\n"
+                + "**Level**: " + hashMap.get("LVL") + "```ELM"
+                + "\n" + "Type: " + hashMap.get("TYPE")
+                + "\t" + "P.Atk: " + hashMap.get("PATK")
+                + "\t" + "P.Def: " + hashMap.get("PDEF")
+                + "\t" + "M.Atk: " + hashMap.get("MATK")
+                + "\t" + "M.Def: " + hashMap.get("MDEF")
+                + "\t" + "Total: " + hashMap.get("TOTAL")
+                + "\t" + "Tt.ATK: " + hashMap.get("TTATK")
+                + "\t" + "Tt.Def: " + hashMap.get("TTDEF")
+                + "\t" + "PATK+Tt.Def: " + hashMap.get("PATKTTDEF")
+                + "\t" + "M.Atk+Tt.Def: " + hashMap.get("MATKTTDEF") + "```" + "```YAML"
+                + "\n" + "Element: " + hashMap.get("ELEMENT") + "```"
         );
-        if (buscado.get("ELEMENT").equalsIgnoreCase("Fire")) {
+        if (hashMap.get("ELEMENT").equalsIgnoreCase("Fire")) {
             showWeapon.setColor(Color.red);
         } else {
-            if (buscado.get("ELEMENT").equalsIgnoreCase("Wind")) {
+            if (hashMap.get("ELEMENT").equalsIgnoreCase("Wind")) {
                 showWeapon.setColor(Color.green);
             } else {
-                if (buscado.get("ELEMENT").equalsIgnoreCase("Water")) {
+                if (hashMap.get("ELEMENT").equalsIgnoreCase("Water")) {
                     showWeapon.setColor(Color.blue);
                 }
             }
@@ -659,25 +664,24 @@ public class Commands extends ListenerAdapter {
         event.getChannel().sendMessage(showWeapon.build()).queue();
 
     }
-    private void pestanaClass(MessageReceivedEvent event, HashMap<String, String> buscado){
+    private void pestanaClass(MessageReceivedEvent event, HashMap<String, String> hashMap){
         EmbedBuilder showClass= new EmbedBuilder();
-        showClass.setTitle(buscado.get("NAME") + "/" + buscado.get("JOB"));
-        showClass.setImage(buscado.get("IMG"));
-        showClass.setDescription("**Primary weapon**: " + "```fix" + "\n" + buscado.get("PRIMARY") + "```"
-                + "\n" + "**Usable weapons**: " + "```fix" + "\n" + buscado.get("USABLE") + "```" + "\n"
-                + "**Level 1**: " + "```fix" + "\n" + buscado.get("LVL1") + "```"
-                + "**Level 2**: " + "```fix" + "\n" + buscado.get("LVL2") + "```"
-                + "**Level 3**: " + "```fix" + "\n" + buscado.get("LVL3") + "```"
-                + "**Level 4**: " + "```fix" + "\n" + buscado.get("LVL4") + "```"
-                + "**Level 5**: " + "```fix" + "\n" + buscado.get("LVL5") + "```"
-                + "**Level 6**: " + "```fix" + "\n" + buscado.get("LVL6") + "```"
-                + "**Level 7**: " + "```fix" + "\n" + buscado.get("LVL7") + "```"
-                + "**Level 8**: " + "```fix" + "\n" + buscado.get("LVL8") + "```"
-                + "**Level 9**: " + "```fix" + "\n" + buscado.get("LVL9") + "```"
-                + "**Level 10**: " + "```fix" + "\n" + buscado.get("LVL10") + "```"
-                + "**Level 11**: " + "```fix" + "\n" + buscado.get("LVL11") + "```"
-                + "**Level 12**: " + "```fix" + "\n" + buscado.get("LVL12") + "```");
-
+        showClass.setTitle(hashMap.get("NAME") + "/" + hashMap.get("JOB"));
+        showClass.setImage(hashMap.get("IMG"));
+        showClass.setDescription("**Primary weapon**: " + "```fix" + "\n" + hashMap.get("PRIMARY") + "```"
+                + "\n" + "**Usable weapons**: " + "```fix" + "\n" + hashMap.get("USABLE") + "```" + "\n"
+                + "**Level 1**: " + "```fix" + "\n" + hashMap.get("LVL1") + "```"
+                + "**Level 2**: " + "```fix" + "\n" + hashMap.get("LVL2") + "```"
+                + "**Level 3**: " + "```fix" + "\n" + hashMap.get("LVL3") + "```"
+                + "**Level 4**: " + "```fix" + "\n" + hashMap.get("LVL4") + "```"
+                + "**Level 5**: " + "```fix" + "\n" + hashMap.get("LVL5") + "```"
+                + "**Level 6**: " + "```fix" + "\n" + hashMap.get("LVL6") + "```"
+                + "**Level 7**: " + "```fix" + "\n" + hashMap.get("LVL7") + "```"
+                + "**Level 8**: " + "```fix" + "\n" + hashMap.get("LVL8") + "```"
+                + "**Level 9**: " + "```fix" + "\n" + hashMap.get("LVL9") + "```"
+                + "**Level 10**: " + "```fix" + "\n" + hashMap.get("LVL10") + "```"
+                + "**Level 11**: " + "```fix" + "\n" + hashMap.get("LVL11") + "```"
+                + "**Level 12**: " + "```fix" + "\n" + hashMap.get("LVL12") + "```");
         showClass.setColor(Color.cyan);
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(showClass.build()).queue();

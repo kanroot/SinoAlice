@@ -253,7 +253,7 @@ public class Nigthmares {
         var nameColo = extraerNameColo(nightmare);
         var img = extraerCard(nightmare);
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
-        dicNightmare.put("NOMBRE", nombre);
+        dicNightmare.put("NAME", nombre);
         dicNightmare.put("PATK", pAtk);
         dicNightmare.put("PDEF", pDef);
         dicNightmare.put("MATK", mAtk);
