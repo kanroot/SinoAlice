@@ -222,6 +222,7 @@ public class Commands extends ListenerAdapter {
                         pestanaArmor(event, stringStringHashMap);
                     }
                 }
+                /*
             case "!CLASS":
                 if (args.length == 2) {
                     var buscado = Main.pjs.find(args[1].toUpperCase());
@@ -235,6 +236,8 @@ public class Commands extends ListenerAdapter {
                         pestanaClass(event, stringStringHashMap);
                     }
                 }
+
+                 */
         }
     }
 
@@ -634,6 +637,7 @@ public class Commands extends ListenerAdapter {
         EmbedBuilder showWeapon = new EmbedBuilder();
         showWeapon.setTitle(hashMap.get(keyNombre));
         showWeapon.setImage(hashMap.get("IMG"));
+        System.out.println(hashMap.get("IMG"));
         showWeapon.setDescription("**Colosseum  skill**: " + "```fix" + "\n" + hashMap.get("NAMECOLO") + ": " + hashMap.get("SKILL") + "```"
                 + "\n" + "**Colosseum Aid Skill**: " + "```fix" + "\n" + hashMap.get("AID") + ": " + hashMap.get("COLOSKILL") + "```" + "\n"
                 + "**Level**: " + hashMap.get("LVL") + "```ELM"

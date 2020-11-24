@@ -220,7 +220,7 @@ public class Nigthmares {
     public String extraerCard(String s) {
         int initialpos = s.indexOf("/CardS");
         int postfinal = s.indexOf("\">", initialpos);
-        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_nightmares/" + s.substring(initialpos, postfinal));
+        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/assets/img_nightmares/" + s.substring(initialpos, postfinal));
     }
 
     public HashMap<String, String> crearDic(String nightmare) {

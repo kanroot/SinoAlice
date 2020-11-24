@@ -70,7 +70,7 @@ public class Weapons {
     public String extraerCard(String s) {
         int initialpos = s.indexOf("/CardS");
         int postfinal = s.indexOf("\">", initialpos);
-        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_weapons/" + s.substring(initialpos, postfinal));
+        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/assets/img_weapons" + s.substring(initialpos, postfinal));
     }
 
     public String extraerPatk(String s) {
@@ -209,7 +209,6 @@ public class Weapons {
 
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
         dicWeapon.put("NAME", nombre);
-        System.out.println(nombre);
         dicWeapon.put("TYPE", type);
         dicWeapon.put("PATK", Patk);
         dicWeapon.put("PDEF", PDef);
