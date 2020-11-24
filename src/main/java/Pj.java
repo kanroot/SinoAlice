@@ -245,7 +245,7 @@ public class Pj {
     public String extractCard(String s) {
         int initialpos = s.indexOf("/CharacterIcon");
         int postfinal = s.indexOf("\">", initialpos);
-        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/src/main/img_nightmares/" + s.substring(initialpos, postfinal));
+        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/assets/img_jobs/" + s.substring(initialpos, postfinal));
     }
 
     public HashMap<String, String> crearDic(String pjs) {
@@ -268,6 +268,7 @@ public class Pj {
         var lv10 = extractLvl10(pjs);
         var lv11 = extractLvl11(pjs);
         var lv12 = extractLvl12(pjs);
+        var img = extractCard(pjs);
         //var img = extractCard(pjs);
         dicPj.put("NAME", name);
         dicPj.put("JOB", job);
@@ -285,6 +286,7 @@ public class Pj {
         dicPj.put("LVL10", lv10);
         dicPj.put("LVL11", lv11);
         dicPj.put("LVL12", lv12);
+        dicPj.put("IMG",img);
         return dicPj;
     }
 

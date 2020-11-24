@@ -662,6 +662,7 @@ public class Commands extends ListenerAdapter {
     private void pestanaClass(MessageReceivedEvent event, HashMap<String, String> buscado){
         EmbedBuilder showClass= new EmbedBuilder();
         showClass.setTitle(buscado.get("NAME") + "/" + buscado.get("JOB"));
+        showClass.setImage(buscado.get("IMG"));
         showClass.setDescription("**Primary weapon**: " + "```fix" + "\n" + buscado.get("PRIMARY") + "```"
                 + "\n" + "**Usable weapons**: " + "```fix" + "\n" + buscado.get("USABLE") + "```" + "\n"
                 + "**Level 1**: " + "```fix" + "\n" + buscado.get("LVL1") + "```"
