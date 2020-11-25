@@ -253,7 +253,6 @@ public class Pj {
         //COLECCION DE LLAVES Y VALORES
         HashMap<String, String> dicPj = new HashMap<>();
         var name = extractName(pjs).toUpperCase();
-        System.out.println(name);
         var job = extractJob(pjs).toUpperCase();
         var primary = giveStringWeapon(pjs);
         var usable = giveStringWeaponUsable(pjs);

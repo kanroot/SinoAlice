@@ -233,8 +233,10 @@ public class Commands extends ListenerAdapter {
                         switch (jobs.toString()){
                             case "ALICE ":
                             case "NIER ":
+                            case "BRIAR ROSE ":
                             case "YOUNG NIER ":
                             case "SNOW WHITE ":
+                            case "LITTLE MERMAID ":
                             case "KAGUYA ":
                             case "GRETEL ":
                             case "PINOCCHIO ":
