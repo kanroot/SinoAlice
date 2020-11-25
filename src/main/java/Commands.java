@@ -222,22 +222,54 @@ public class Commands extends ListenerAdapter {
                         pestanaArmor(event, stringStringHashMap);
                     }
                 }
-                /*
+
             case "!CLASS":
-                if (args.length == 2) {
-                    var buscado = Main.pjs.find(args[1].toUpperCase());
-                    for (HashMap<String, String> stringStringHashMap : buscado) {
-                        pestanaClass(event, stringStringHashMap);
+                StringBuilder jobs = new StringBuilder();
+                String jobClass = null;
+                String nameJob = null;
+                if (args.length > 2) {
+                    for (int i = 1; i < args.length; i++) {
+                        jobs.append(args[i].toUpperCase()).append(" ");
+                        switch (jobs.toString()){
+                            case "ALICE ":
+                            case "NIER ":
+                            case "YOUNG NIER ":
+                            case "SNOW WHITE ":
+                            case "KAGUYA ":
+                            case "GRETEL ":
+                            case "PINOCCHIO ":
+                            case "DOROTHY ":
+                            case "CINDERELLA ":
+                            case "THREE LITTLE PIGGIES ":
+                            case "2B ":
+                            case "9S ":
+                            case "A2 ":
+                            case "EMIL CLONE ":
+                            case "EMIL ":
+                            case "KAINE ":
+                            case "DEVOLA&POPOLA ":
+                            case "YOUNG EMIL":
+                                nameJob = String.valueOf(jobs.deleteCharAt(jobs.lastIndexOf(" ")));
+                                jobClass = args[args.length - 1];
+                                break;
+                        }
                     }
-                }
-                if (args.length == 3) {
-                    var buscado = Main.pjs.find(args[1].toUpperCase(), args[2].toUpperCase());
-                    for (HashMap<String, String> stringStringHashMap : buscado) {
-                        pestanaClass(event, stringStringHashMap);
+                    if (nameJob != null && nameJob.equals(jobs.toString())) {
+                        var pjfind = Main.pjs.find(nameJob);
+                        for (HashMap<String, String> stringStringHashMap : pjfind) {
+                            pestanaClass(event, stringStringHashMap);
+                        }
+                    }else {
+                        var pjfind = Main.pjs.find(nameJob,jobClass);
+                        for (HashMap<String, String> stringStringHashMap : pjfind) {
+                            pestanaClass(event, stringStringHashMap);
+                        }
                     }
+
+
                 }
 
-                 */
+
         }
     }
 
@@ -566,7 +598,6 @@ public class Commands extends ListenerAdapter {
         } catch (NumberFormatException e) {
             var buscado = Main.armas.buscar(arg2);
             pestanaWeapons(event, buscado);
-            e.printStackTrace();
         }
     }
     //endregion

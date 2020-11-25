@@ -239,7 +239,7 @@ public class Weapons {
 
     public HashMap<String, String> buscar(String buscado) {
         for (var e : weapons) {
-            if (e.get("NOMBRE").contains(buscado.toUpperCase())) {
+            if (e.get("NAME").contains(buscado.toUpperCase())) {
                 return e;
             }
         }

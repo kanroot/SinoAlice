@@ -188,7 +188,7 @@ public class Armors {
 
     public HashMap<String, String> buscar(String buscado) {
         for (var e : armor) {
-            if (e.get("NOMBRE").contains(buscado.toUpperCase())) {
+            if (e.get("NAME").contains(buscado.toUpperCase())) {
                 return e;
             }
         }

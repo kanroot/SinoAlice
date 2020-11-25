@@ -293,7 +293,7 @@ public class Nigthmares {
 
     public HashMap<String, String> buscar(String buscado) {
         for (var element : night) {
-            if (element.get("NOMBRE").contains(buscado.toUpperCase())) {
+            if (element.get("NAME").contains(buscado.toUpperCase())) {
                 return element;
             }
 
