@@ -227,17 +227,20 @@ public class Commands extends ListenerAdapter {
                 StringBuilder jobs = new StringBuilder();
                 String jobClass = null;
                 String nameJob = null;
-                if (args.length > 2) {
+                if (args.length >= 2) {
                     for (int i = 1; i < args.length; i++) {
                         jobs.append(args[i].toUpperCase()).append(" ");
+
                         switch (jobs.toString()){
                             case "ALICE ":
-                            case "NIER ":
-                            case "BRIAR ROSE ":
-                            case "YOUNG NIER ":
                             case "SNOW WHITE ":
-                            case "LITTLE MERMAID ":
+                            case "BRIAR ROSE ":
                             case "KAGUYA ":
+                            case "NIER ":
+                            case "RED RIDING HOOD ":
+                            case "NUTCRACKER ":
+                            case "YOUNG NIER ":
+                            case "LITTLE MERMAID ":
                             case "GRETEL ":
                             case "PINOCCHIO ":
                             case "DOROTHY ":
@@ -250,7 +253,7 @@ public class Commands extends ListenerAdapter {
                             case "EMIL ":
                             case "KAINE ":
                             case "DEVOLA&POPOLA ":
-                            case "YOUNG EMIL":
+                            case "YOUNG EMIL ":
                                 nameJob = String.valueOf(jobs.deleteCharAt(jobs.lastIndexOf(" ")));
                                 jobClass = args[args.length - 1];
                                 break;
@@ -261,11 +264,21 @@ public class Commands extends ListenerAdapter {
                         for (HashMap<String, String> stringStringHashMap : pjfind) {
                             pestanaClass(event, stringStringHashMap);
                         }
+                        //I dont know what happen with emil
                     }else {
-                        var pjfind = Main.pjs.find(nameJob,jobClass);
-                        for (HashMap<String, String> stringStringHashMap : pjfind) {
-                            pestanaClass(event, stringStringHashMap);
+                        if (jobs.toString().equals("EMILCLONE ") || jobs.toString().equals("EMILCLONE MINISTREL ")) {
+                            var pjfind = Main.pjs.find("EMIL CLONE");
+                            for (HashMap<String, String> stringStringHashMap : pjfind) {
+                                pestanaClass(event, stringStringHashMap);
+                            }
                         }
+                        else {
+                            var pjfind = Main.pjs.find(nameJob,jobClass);
+                            for (HashMap<String, String> stringStringHashMap : pjfind) {
+                                pestanaClass(event, stringStringHashMap);
+                            }
+                        }
+
                     }
 
 
