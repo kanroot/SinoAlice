@@ -228,7 +228,7 @@ public class Commands extends ListenerAdapter {
                 String jobClass = null;
                 String nameJob = null;
                 if (args.length >= 2) {
-                    for (int i = 1; i < args.length - 1; i++) {
+                    for (int i = 1; i < args.length; i++) {
                         jobs.append(args[i].toUpperCase()).append(" ");
                     }
                     switch (jobs.toString()) {
