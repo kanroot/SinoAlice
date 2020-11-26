@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.util.HashMap;
-
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -230,44 +229,54 @@ public class Commands extends ListenerAdapter {
                 if (args.length >= 2) {
                     for (int i = 1; i < args.length; i++) {
                         jobs.append(args[i].toUpperCase()).append(" ");
+                        switch (jobs.toString()) {
+                            case "ALICE ":
+                            case "SNOW WHITE ":
+                            case "BRIAR ROSE ":
+                            case "KAGUYA ":
+                            case "NIER ":
+                            case "RED RIDING HOOD ":
+                            case "NUTCRACKER ":
+                            case "YOUNG NIER ":
+                            case "LITTLE MERMAID ":
+                            case "GRETEL ":
+                            case "PINOCCHIO ":
+                            case "DOROTHY ":
+                            case "CINDERELLA ":
+                            case "THREE LITTLE PIGGIES ":
+                            case "2B ":
+                            case "9S ":
+                            case "A2 ":
+                            case "EMILCLONE ":
+                            case "EMIL ":
+                            case "KAINE ":
+                            case "DEVOLA&POPOLA ":
+                            case "YOUNG EMIL ":
+                                nameJob = String.valueOf(jobs.deleteCharAt(jobs.lastIndexOf(" ")));
+                                jobClass = String.valueOf(args[args.length - 1]).toUpperCase();
+                                break;
+                        }
+
                     }
-                    switch (jobs.toString()) {
-                        case "ALICE ":
-                        case "SNOW WHITE ":
-                        case "BRIAR ROSE ":
-                        case "KAGUYA ":
-                        case "NIER ":
-                        case "RED RIDING HOOD ":
-                        case "NUTCRACKER ":
-                        case "YOUNG NIER ":
-                        case "LITTLE MERMAID ":
-                        case "GRETEL ":
-                        case "PINOCCHIO ":
-                        case "DOROTHY ":
-                        case "CINDERELLA ":
-                        case "THREE LITTLE PIGGIES ":
-                        case "2B ":
-                        case "9S ":
-                        case "A2 ":
-                        case "EMIL CLONE ":
-                        case "EMIL ":
-                        case "KAINE ":
-                        case "DEVOLA&POPOLA ":
-                        case "YOUNG EMIL ":
-                            nameJob = String.valueOf(jobs.deleteCharAt(jobs.lastIndexOf(" ")));
-                            jobClass = String.valueOf(args[args.length - 1]).toUpperCase();
-                            break;
-                    }
-                    if (nameJob != null && nameJob.equals(jobs.toString()) && nameJob.contains(jobClass)) {
+                    if (nameJob != null && nameJob.equals(jobs.toString()) && nameJob.contains(jobClass) && !(nameJob.equals("EMILCLONE"))) {
                         var pjfind = Main.pjs.find(nameJob);
                         for (HashMap<String, String> stringStringHashMap : pjfind) {
                             pestanaClass(event, stringStringHashMap);
                         }
                     } else {
-                        var pjfind = Main.pjs.find(nameJob, jobClass);
-                        for (HashMap<String, String> stringStringHashMap : pjfind) {
-                            pestanaClass(event, stringStringHashMap);
+                        assert nameJob != null;
+                        if (nameJob.equals("EMILCLONE")) {
+                            var pjfind = Main.pjs.find("EMIL CLONE");
+                            for (HashMap<String, String> stringStringHashMap : pjfind) {
+                                pestanaClass(event, stringStringHashMap);
+                            }
                         }
+                        else{ var pjfind = Main.pjs.find(nameJob, jobClass);
+                            for (HashMap<String, String> stringStringHashMap : pjfind) {
+                                pestanaClass(event, stringStringHashMap);
+                            }
+                        }
+
                     }
                 }
         }
