@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.util.HashMap;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -222,13 +223,12 @@ public class Commands extends ListenerAdapter {
                         pestanaArmor(event, stringStringHashMap);
                     }
                 }
-
             case "!CLASS":
                 StringBuilder jobs = new StringBuilder();
                 String jobClass = null;
                 String nameJob = null;
                 if (args.length >= 2) {
-                    for (int i = 1; i < args.length; i++) {
+                    for (int i = 1; i < args.length - 1; i++) {
                         jobs.append(args[i].toUpperCase()).append(" ");
                     }
                     switch (jobs.toString()) {
@@ -255,10 +255,10 @@ public class Commands extends ListenerAdapter {
                         case "DEVOLA&POPOLA ":
                         case "YOUNG EMIL ":
                             nameJob = String.valueOf(jobs.deleteCharAt(jobs.lastIndexOf(" ")));
-                            jobClass = args[args.length - 1];
+                            jobClass = String.valueOf(args[args.length - 1]).toUpperCase();
                             break;
                     }
-                    if (nameJob != null && nameJob.equals(jobs.toString())) {
+                    if (nameJob != null && nameJob.equals(jobs.toString()) && nameJob.contains(jobClass)) {
                         var pjfind = Main.pjs.find(nameJob);
                         for (HashMap<String, String> stringStringHashMap : pjfind) {
                             pestanaClass(event, stringStringHashMap);
@@ -270,9 +270,9 @@ public class Commands extends ListenerAdapter {
                         }
                     }
                 }
-    }
+        }
 
-}
+    }
 
     //methods
     //region info
