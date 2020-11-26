@@ -230,63 +230,49 @@ public class Commands extends ListenerAdapter {
                 if (args.length >= 2) {
                     for (int i = 1; i < args.length; i++) {
                         jobs.append(args[i].toUpperCase()).append(" ");
-
-                        switch (jobs.toString()){
-                            case "ALICE ":
-                            case "SNOW WHITE ":
-                            case "BRIAR ROSE ":
-                            case "KAGUYA ":
-                            case "NIER ":
-                            case "RED RIDING HOOD ":
-                            case "NUTCRACKER ":
-                            case "YOUNG NIER ":
-                            case "LITTLE MERMAID ":
-                            case "GRETEL ":
-                            case "PINOCCHIO ":
-                            case "DOROTHY ":
-                            case "CINDERELLA ":
-                            case "THREE LITTLE PIGGIES ":
-                            case "2B ":
-                            case "9S ":
-                            case "A2 ":
-                            case "EMIL CLONE ":
-                            case "EMIL ":
-                            case "KAINE ":
-                            case "DEVOLA&POPOLA ":
-                            case "YOUNG EMIL ":
-                                nameJob = String.valueOf(jobs.deleteCharAt(jobs.lastIndexOf(" ")));
-                                jobClass = args[args.length - 1];
-                                break;
-                        }
+                    }
+                    switch (jobs.toString()) {
+                        case "ALICE ":
+                        case "SNOW WHITE ":
+                        case "BRIAR ROSE ":
+                        case "KAGUYA ":
+                        case "NIER ":
+                        case "RED RIDING HOOD ":
+                        case "NUTCRACKER ":
+                        case "YOUNG NIER ":
+                        case "LITTLE MERMAID ":
+                        case "GRETEL ":
+                        case "PINOCCHIO ":
+                        case "DOROTHY ":
+                        case "CINDERELLA ":
+                        case "THREE LITTLE PIGGIES ":
+                        case "2B ":
+                        case "9S ":
+                        case "A2 ":
+                        case "EMIL CLONE ":
+                        case "EMIL ":
+                        case "KAINE ":
+                        case "DEVOLA&POPOLA ":
+                        case "YOUNG EMIL ":
+                            nameJob = String.valueOf(jobs.deleteCharAt(jobs.lastIndexOf(" ")));
+                            jobClass = args[args.length - 1];
+                            break;
                     }
                     if (nameJob != null && nameJob.equals(jobs.toString())) {
                         var pjfind = Main.pjs.find(nameJob);
                         for (HashMap<String, String> stringStringHashMap : pjfind) {
                             pestanaClass(event, stringStringHashMap);
                         }
-                        //I dont know what happen with emil
-                    }else {
-                        if (jobs.toString().equals("EMILCLONE ") || jobs.toString().equals("EMILCLONE MINISTREL ")) {
-                            var pjfind = Main.pjs.find("EMIL CLONE");
-                            for (HashMap<String, String> stringStringHashMap : pjfind) {
-                                pestanaClass(event, stringStringHashMap);
-                            }
+                    } else {
+                        var pjfind = Main.pjs.find(nameJob, jobClass);
+                        for (HashMap<String, String> stringStringHashMap : pjfind) {
+                            pestanaClass(event, stringStringHashMap);
                         }
-                        else {
-                            var pjfind = Main.pjs.find(nameJob,jobClass);
-                            for (HashMap<String, String> stringStringHashMap : pjfind) {
-                                pestanaClass(event, stringStringHashMap);
-                            }
-                        }
-
                     }
-
-
                 }
-
-
-        }
     }
+
+}
 
     //methods
     //region info
@@ -714,8 +700,9 @@ public class Commands extends ListenerAdapter {
         event.getChannel().sendMessage(showWeapon.build()).queue();
 
     }
-    private void pestanaClass(MessageReceivedEvent event, HashMap<String, String> hashMap){
-        EmbedBuilder showClass= new EmbedBuilder();
+
+    private void pestanaClass(MessageReceivedEvent event, HashMap<String, String> hashMap) {
+        EmbedBuilder showClass = new EmbedBuilder();
         showClass.setTitle(hashMap.get("NAME") + "/" + hashMap.get("JOB"));
         showClass.setImage(hashMap.get("IMG"));
         showClass.setDescription("**Primary weapon**: " + "```fix" + "\n" + hashMap.get("PRIMARY") + "```"
