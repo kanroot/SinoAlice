@@ -1,3 +1,5 @@
+package model;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +15,7 @@ public class Pj {
     private ArrayList<String> leertxt() {
         ArrayList<String> e = new ArrayList<>();
         try {
-            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\assets\\jobs\\all_jobs.txt"));
+            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\assets\\data\\all_jobs.txt"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("Character：")) {
@@ -31,7 +33,7 @@ public class Pj {
         int reference = e.indexOf("Character：");
         int initialpos = e.indexOf("\">", reference);
         int lastpos = e.indexOf("</a>", initialpos);
-        return e.substring(initialpos + 2, lastpos);
+        return e.substring(initialpos + 2, lastpos) + " ";
     }
 
     public String extractJob(String e) {
@@ -47,10 +49,11 @@ public class Pj {
         int lastpos = e.indexOf("\">", initialpos);
         return e.substring(initialpos + 13, lastpos - 4);
     }
-    public String giveStringWeapon(String e){
+
+    public String giveStringWeapon(String e) {
         var number = extractPrimaryWeapon(e);
         String weaponString = "";
-        switch (number){
+        switch (number) {
             case "001":
                 weaponString = "Instr.";
                 break;
@@ -88,9 +91,9 @@ public class Pj {
         return f;
     }
 
-    public ArrayList<String> extractNumberUsable(String e){
-        var  f = extractUrlUsableWeapon(e);
-        ArrayList <String> number = new ArrayList<>();
+    public ArrayList<String> extractNumberUsable(String e) {
+        var f = extractUrlUsableWeapon(e);
+        ArrayList<String> number = new ArrayList<>();
         for (String s : f) {
             int reference = s.indexOf("weapon_icon_");
             int initialpos = s.indexOf("0", reference);
@@ -100,7 +103,7 @@ public class Pj {
         return number;
     }
 
-    public String giveStringWeaponUsable(String e){
+    public String giveStringWeaponUsable(String e) {
         var number = extractNumberUsable(e);
         StringBuilder weaponString = new StringBuilder();
         for (String s : number) {
@@ -273,7 +276,7 @@ public class Pj {
         dicPj.put("NAME", name);
         dicPj.put("JOB", job);
         dicPj.put("PRIMARY", primary);
-        dicPj.put("USABLE",usable);
+        dicPj.put("USABLE", usable);
         dicPj.put("LVL1", lv1);
         dicPj.put("LVL2", lv2);
         dicPj.put("LVL3", lv3);
@@ -286,7 +289,7 @@ public class Pj {
         dicPj.put("LVL10", lv10);
         dicPj.put("LVL11", lv11);
         dicPj.put("LVL12", lv12);
-        dicPj.put("IMG",img);
+        dicPj.put("IMG", img);
         return dicPj;
     }
 
@@ -297,6 +300,7 @@ public class Pj {
             pjs.add(valores);
         }
     }
+
     public ArrayList<HashMap<String, String>> find(String name) {
         ArrayList<HashMap<String, String>> f = new ArrayList<>();
         for (HashMap<String, String> pj : pjs) {
@@ -306,10 +310,11 @@ public class Pj {
         }
         return f;
     }
+
     public ArrayList<HashMap<String, String>> find(String name, String job) {
         ArrayList<HashMap<String, String>> f = new ArrayList<>();
         for (HashMap<String, String> pj : pjs) {
-            if (pj.get("NAME").equalsIgnoreCase(name) && pj.get("JOB").equalsIgnoreCase(job)) {
+            if (pj.get("NAME").contains(name) && pj.get("JOB").contains(job)) {
                 f.add(pj);
             }
         }

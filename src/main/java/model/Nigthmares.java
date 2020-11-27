@@ -1,3 +1,5 @@
+package model;
+
 import java.io.File;
 import java.util.*;
 
@@ -7,14 +9,14 @@ public class Nigthmares {
         generarNightmare();
     }
 
-    ArrayList<HashMap<String, String>> night = new ArrayList<>();
+    public ArrayList<HashMap<String, String>> night = new ArrayList<>();
 
     private String[] leertxt() {
         String s2 = "</tr><tr><td class=\"colCompare\">";
         String lineaI = "";
         String[] e;
         try {
-            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\src\\main\\nightmares.txt"));
+            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\assets\\data\\nightmares.txt"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {
@@ -34,7 +36,7 @@ public class Nigthmares {
         int reference = e.lastIndexOf("enname");
         int initialpos = e.indexOf("\">", reference);
         int lastpos = e.indexOf("</a>", initialpos);
-        return e.substring(initialpos + 2, lastpos);
+        return e.substring(initialpos + 2, lastpos) + " ";
     }
 
     //patk
@@ -228,7 +230,7 @@ public class Nigthmares {
         //COLECCION DE LLAVES Y VALORES
         HashMap<String, String> dicNightmare = new HashMap<>();
 
-        var nombre = extraerUnNom(nightmare).toUpperCase();
+        var name = extraerUnNom(nightmare).toUpperCase();
         var pAtk = extraerPatk(nightmare);
         var pDef = extraerpDef(nightmare);
         var mAtk = extraerMatk(nightmare);
@@ -253,7 +255,7 @@ public class Nigthmares {
         var nameColo = extraerNameColo(nightmare);
         var img = extraerCard(nightmare);
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
-        dicNightmare.put("NAME", nombre);
+        dicNightmare.put("NAME", name);
         dicNightmare.put("PATK", pAtk);
         dicNightmare.put("PDEF", pDef);
         dicNightmare.put("MATK", mAtk);
@@ -278,7 +280,7 @@ public class Nigthmares {
         dicNightmare.put("MATKTTDEF", matkttdef);
         dicNightmare.put("TIME", time);
         dicNightmare.put("DURATION", duration);
-        dicNightmare.put("IMG",img);
+        dicNightmare.put("IMG", img);
         return dicNightmare;
     }
 

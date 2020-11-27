@@ -1,9 +1,11 @@
+package model;
+
 import java.io.File;
 import java.util.*;
 
 public class Weapons {
 
-    ArrayList<HashMap<String, String>> weapons = new ArrayList<>();
+    public ArrayList<HashMap<String, String>> weapons = new ArrayList<>();
 
     public Weapons() {
         generarWeapon();
@@ -14,7 +16,7 @@ public class Weapons {
         String lineaI = "";
         String[] e;
         try {
-            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\src\\main\\weapons.txt"));
+            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\assets\\data\\weapons.txt"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {
@@ -33,7 +35,7 @@ public class Weapons {
         int reference = e.lastIndexOf("enname");
         int initialpos = e.indexOf("\">", reference);
         int lastpos = e.indexOf("</a>", reference);
-        return e.substring(initialpos + 2, lastpos);
+        return e.substring(initialpos + 2, lastpos) + " ";
     }
 
     public String extraertype(String e) {
@@ -67,6 +69,7 @@ public class Weapons {
         return (s.substring(initialpos, postfinal));
 
     }
+
     public String extraerCard(String s) {
         int initialpos = s.indexOf("/CardS");
         int postfinal = s.indexOf("\">", initialpos);
@@ -173,6 +176,7 @@ public class Weapons {
         int postfinal = j.indexOf("</div>") + 1;
         return (j.substring(3, postfinal - 1).toUpperCase());
     }
+
     //AID
     public String extraerCAid(String s) {
         int reference = s.lastIndexOf("battleImg");
@@ -224,8 +228,8 @@ public class Weapons {
         dicWeapon.put("COLOSKILL", coloSkill);
         dicWeapon.put("NAMECOLO", nameColoSkill);
         dicWeapon.put("ELEMENT", element);
-        dicWeapon.put("AID",aidskill);
-        dicWeapon.put("IMG",img);
+        dicWeapon.put("AID", aidskill);
+        dicWeapon.put("IMG", img);
         return dicWeapon;
     }
 

@@ -1,3 +1,5 @@
+package model;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -5,7 +7,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Armors {
-    ArrayList<HashMap<String, String>> armor = new ArrayList<>();
+    public ArrayList<HashMap<String, String>> armor = new ArrayList<>();
 
     public Armors() {
         generarArmor();
@@ -16,7 +18,7 @@ public class Armors {
         String lineaI = "";
         String[] e;
         try {
-            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\src\\main\\armors.txt"));
+            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\assets\\data\\armors.txt"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {
@@ -36,7 +38,7 @@ public class Armors {
         int reference = e.lastIndexOf("enname");
         int initialpos = e.indexOf("\">", reference);
         int lastpos = e.indexOf("</a>", reference);
-        return e.substring(initialpos + 2, lastpos);
+        return e.substring(initialpos + 2, lastpos) + " ";
 
     }
 
