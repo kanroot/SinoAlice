@@ -12,9 +12,9 @@ import javax.security.auth.login.LoginException;
 public class Main {
 
     public static final String prefix = "!";
-    public static Nigthmares pesadillas = new Nigthmares();
-    public static Armors armaduras = new Armors();
-    public static Weapons armas = new Weapons();
+    public static Nigthmares nigthmares = new Nigthmares();
+    public static Armors armors = new Armors();
+    public static Weapons weapons = new Weapons();
     public static Pj pjs = new Pj();
     // define an eventwaiter, dont forget to add this to the JDABuilder!
 

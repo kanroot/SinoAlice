@@ -45,7 +45,7 @@ public class Commands extends ListenerAdapter {
                 searchNightmare(event, name.toString());
                 break;
             case Main.prefix + "MAXN":
-                var point = Main.pesadillas.point();
+                var point = Main.nigthmares.point();
                 for (HashMap<String, String> stringStringHashtable : point) {
                     MessageManager.pestanaNightmare(event, stringStringHashtable);
                 }
@@ -70,27 +70,27 @@ public class Commands extends ListenerAdapter {
                 searchA(event, nameA.toString());
                 break;
             case Main.prefix + "MAXA":
-                var pointA = Main.armaduras.point();
+                var pointA = Main.armors.point();
                 for (HashMap<String, String> stringStringHashtable : pointA) {
                     MessageManager.pestanaArmor(event, stringStringHashtable);
                 }
 
             case Main.prefix + "ARM":
                 if (args.length == 3) {
-                    var buscado = Main.armaduras.filtroElemType(args[1], args[2], "TOTAL");
+                    var buscado = Main.armors.filtroElemType(args[1], args[2], "TOTAL");
                     for (HashMap<String, String> stringStringHashtable : buscado) {
                         MessageManager.pestanaArmor(event, stringStringHashtable);
                     }
                 }
 
                 if (args.length == 4) {
-                    var buscado = Main.armaduras.filtroElemType(args[1], args[2], args[3].toUpperCase());
+                    var buscado = Main.armors.filtroElemType(args[1], args[2], args[3].toUpperCase());
                     for (HashMap<String, String> stringStringHashtable : buscado) {
                         MessageManager.pestanaArmor(event, stringStringHashtable);
                     }
                 }
                 if (args.length == 5) {
-                    var buscado = Main.armaduras.filtroElemType(args[1], args[2], args[3].toUpperCase());
+                    var buscado = Main.armors.filtroElemType(args[1], args[2], args[3].toUpperCase());
                     int trunc;
                     trunc = Integer.parseInt(args[4]);
                     if (trunc > buscado.size()) {
@@ -121,26 +121,26 @@ public class Commands extends ListenerAdapter {
                 searchW(event, nameW.toString());
                 break;
             case Main.prefix + "MAXW":
-                var pointW = Main.armas.point();
+                var pointW = Main.weapons.point();
                 for (HashMap<String, String> stringStringHashtable : pointW) {
                     MessageManager.pestanaWeapons(event, stringStringHashtable);
                 }
                 break;
             case Main.prefix + "WPN":
                 if (args.length == 3) {
-                    var buscado = Main.armas.filtroElemType(args[1], args[2], "TOTAL");
+                    var buscado = Main.weapons.filtroElemType(args[1], args[2], "TOTAL");
                     for (HashMap<String, String> stringStringHashtable : buscado) {
                         MessageManager.pestanaWeapons(event, stringStringHashtable);
                     }
                 }
                 if (args.length == 4) {
-                    var buscado = Main.armas.filtroElemType(args[1], args[2], args[3].toUpperCase());
+                    var buscado = Main.weapons.filtroElemType(args[1], args[2], args[3].toUpperCase());
                     for (HashMap<String, String> stringStringHashtable : buscado) {
                         MessageManager.pestanaWeapons(event, stringStringHashtable);
                     }
                 }
                 if (args.length == 5) {
-                    var buscado = Main.armas.filtroElemType(args[1], args[2], args[3].toUpperCase());
+                    var buscado = Main.weapons.filtroElemType(args[1], args[2], args[3].toUpperCase());
                     int trunc = Integer.parseInt(args[4]);
                     if (trunc > buscado.size()) {
                         trunc = buscado.size();
@@ -157,7 +157,7 @@ public class Commands extends ListenerAdapter {
                         nameS.append(args[i].toUpperCase()).append(" ");
                     }
                     nameS.deleteCharAt(nameS.lastIndexOf(" "));
-                    var buscado = Main.pesadillas.storySkill(nameS.toString());
+                    var buscado = Main.nigthmares.storySkill(nameS.toString());
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaNightmare(event, stringStringHashMap);
                     }
@@ -170,7 +170,7 @@ public class Commands extends ListenerAdapter {
                         nameC.append(args[i].toUpperCase()).append(" ");
                     }
                     nameC.deleteCharAt(nameC.lastIndexOf(" "));
-                    var buscado = Main.pesadillas.coloSkill(nameC.toString());
+                    var buscado = Main.nigthmares.coloSkill(nameC.toString());
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaNightmare(event, stringStringHashMap);
                     }
@@ -183,7 +183,7 @@ public class Commands extends ListenerAdapter {
                         nameS.append(args[i].toUpperCase()).append(" ");
                     }
                     nameS.deleteCharAt(nameS.lastIndexOf(" "));
-                    var buscado = Main.armas.aidSkill(nameS.toString());
+                    var buscado = Main.weapons.aidSkill(nameS.toString());
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaWeapons(event, stringStringHashMap);
                     }
@@ -195,7 +195,7 @@ public class Commands extends ListenerAdapter {
                         nameC.append(args[i].toUpperCase()).append(" ");
                     }
                     nameC.deleteCharAt(nameC.lastIndexOf(" "));
-                    var buscado = Main.armas.coloSkill(nameC.toString());
+                    var buscado = Main.weapons.coloSkill(nameC.toString());
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaWeapons(event, stringStringHashMap);
                     }
@@ -207,7 +207,7 @@ public class Commands extends ListenerAdapter {
                         nameS.append(args[i].toUpperCase()).append(" ");
                     }
                     nameS.deleteCharAt(nameS.lastIndexOf(" "));
-                    var buscado = Main.armaduras.storySkill(nameS.toString());
+                    var buscado = Main.armors.storySkill(nameS.toString());
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaArmor(event, stringStringHashMap);
                     }
@@ -219,7 +219,7 @@ public class Commands extends ListenerAdapter {
                         nameC.append(args[i].toUpperCase()).append(" ");
                     }
                     nameC.deleteCharAt(nameC.lastIndexOf(" "));
-                    var buscado = Main.armaduras.coloSkill(nameC.toString());
+                    var buscado = Main.armors.coloSkill(nameC.toString());
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaArmor(event, stringStringHashMap);
                     }
@@ -278,10 +278,10 @@ public class Commands extends ListenerAdapter {
 
     public ArrayList<String> nightmarePattern(String buscado) {
         ArrayList<String> namesNightmares = new ArrayList<>();
-        for (int i = 0; i < Main.pesadillas.night.size(); i++) {
-            if (Main.pesadillas.night.get(i).get(keyName).contains(buscado.toUpperCase())) {
+        for (int i = 0; i < Main.nigthmares.night.size(); i++) {
+            if (Main.nigthmares.night.get(i).get(keyName).contains(buscado.toUpperCase())) {
                 int n = (i + 1);
-                namesNightmares.add("**" + n + "**" + ". " + Main.pesadillas.night.get(i).get(keyName) + "\n");
+                namesNightmares.add("**" + n + "**" + ". " + Main.nigthmares.night.get(i).get(keyName) + "\n");
             }
         }
         return namesNightmares;
@@ -289,21 +289,21 @@ public class Commands extends ListenerAdapter {
 
     private void searchNightmare(MessageReceivedEvent event, String arg) {
         try {
-            var point = Main.pesadillas.buscar(Integer.parseInt(arg));
+            var point = Main.nigthmares.buscar(Integer.parseInt(arg));
             MessageManager.pestanaNightmare(event, point);
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            var point = Main.pesadillas.buscar(arg);
+            var point = Main.nigthmares.buscar(arg);
             MessageManager.pestanaNightmare(event, point);
         }
     }
 
     public ArrayList<String> armorsfind(String buscado) {
         ArrayList<String> namesArmors = new ArrayList<>();
-        for (int i = 0; i < Main.armaduras.armor.size(); i++) {
-            if (Main.armaduras.armor.get(i).get("NAME").contains(buscado.toUpperCase())) {
+        for (int i = 0; i < Main.armors.armor.size(); i++) {
+            if (Main.armors.armor.get(i).get("NAME").contains(buscado.toUpperCase())) {
                 int n = (i + 1);
-                namesArmors.add("**" + n + "**" + ". " + Main.armaduras.armor.get(i).get(keyName) + "\n");
+                namesArmors.add("**" + n + "**" + ". " + Main.armors.armor.get(i).get(keyName) + "\n");
             }
         }
         return namesArmors;
@@ -311,10 +311,10 @@ public class Commands extends ListenerAdapter {
 
     private void searchA(MessageReceivedEvent event, String arg) {
         try {
-            var armorSearched = Main.armaduras.buscar(Integer.parseInt(arg));
+            var armorSearched = Main.armors.buscar(Integer.parseInt(arg));
             MessageManager.pestanaArmor(event, armorSearched);
         } catch (NumberFormatException e) {
-            var armorSearched = Main.armaduras.buscar(arg);
+            var armorSearched = Main.armors.buscar(arg);
             MessageManager.pestanaArmor(event, armorSearched);
             e.printStackTrace();
         }
@@ -322,10 +322,10 @@ public class Commands extends ListenerAdapter {
 
     public ArrayList<String> weaponsfind(String searched) {
         ArrayList<String> namesWeapons = new ArrayList<>();
-        for (int i = 0; i < Main.armas.weapons.size(); i++) {
-            if (Main.armas.weapons.get(i).get(keyName).contains(searched.toUpperCase())) {
+        for (int i = 0; i < Main.weapons.weapons.size(); i++) {
+            if (Main.weapons.weapons.get(i).get(keyName).contains(searched.toUpperCase())) {
                 int n = (i + 1);
-                namesWeapons.add("**" + n + "**" + ". " + Main.armas.weapons.get(i).get(keyName) + "\n");
+                namesWeapons.add("**" + n + "**" + ". " + Main.weapons.weapons.get(i).get(keyName) + "\n");
             }
         }
         return namesWeapons;
@@ -333,10 +333,10 @@ public class Commands extends ListenerAdapter {
 
     private void searchW(MessageReceivedEvent event, String arg2) {
         try {
-            var buscado = Main.armas.buscar(Integer.parseInt(arg2));
+            var buscado = Main.weapons.buscar(Integer.parseInt(arg2));
             MessageManager.pestanaWeapons(event, buscado);
         } catch (NumberFormatException e) {
-            var buscado = Main.armas.buscar(arg2);
+            var buscado = Main.weapons.buscar(arg2);
             MessageManager.pestanaWeapons(event, buscado);
         }
     }
