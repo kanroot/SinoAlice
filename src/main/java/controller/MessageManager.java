@@ -49,28 +49,28 @@ public class MessageManager {
         );
         helper.addField("!helper", "```Show all commands.```", false);
         helper.addField("!info", "```Show all information of bot.```", false);
-        helper.addField("!nightmares", "```Show all nightmares and it's number or matched with a user input."
+        helper.addField("!nightmares", "```Show all nightmares and it's number or matched with a user input (Pattern)."
                 + "\n" + "Examples:"
                 + "\n" + "!nightmares All"
                 + "\n" + "!nightmares hound"
                 + "\n" + "!nightmares Real Lizard"
                 + "\n" + "!nightmares orc```", false);
-        helper.addField("!armors", "```Show all armors names and it's number or matched with a user input."
+        helper.addField("!armors", "```Show all armors names and it's number or matched with a user input (Pattern)."
                 + "\n" + "Examples:"
                 + "\n" + "!armors All"
                 + "\n" + "!armors golden"
                 + "\n" + "!armors Schoolgirl```", false);
-        helper.addField("!weapons", "```Show all weapons names and it's number or matched with a user input"
+        helper.addField("!weapons", "```Show all weapons names and it's number or matched with a user input (Pattern)"
                 + "\n" + "Examples:"
                 + "\n" + "!weapons All"
                 + "\n" + "!weapons staff"
                 + "\n" + "!weapons Book of Observation```", false);
-        helper.addField("!searchN", "```Search one nightmare by it's number/name or matched with a user input."
+        helper.addField("!searchN", "```Search one nightmare by its number/name or matched with a user input."
                 + "\n" + "!searchN 1" + "\n" +
                 "!searchN Flying Magician" +
                 "\n!searchN 148" +
                 "\n!searchN UGALLU```", false);
-        helper.addField("!searchA", "```Search one armor by it's number/name."
+        helper.addField("!searchA", "```Search one armor by its number/name."
                 + "\n" + "\nExamples: \n!searchA 1"
                 + "\n" + "!searchA Nameless Youth's Hairband (Projectile)"
                 + "\n" + "!SearchA 31"
