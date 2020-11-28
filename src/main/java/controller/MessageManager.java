@@ -109,7 +109,7 @@ public class MessageManager {
                 "\n!coloN Tidal Fairy Master (I)" +
                 "\n!coloN Tidal Fairy```", false);
         helper.addField("!aidW", "```Show all weapons with the aid Skill searched."
-                + "\n" + "\nExamples:" + "\n!aidW Blazing Wildfire (I)" +
+                + "\n" + "\nExamples:" + "\n!aidW Replenish Magic (II)" +
                 "\n!aidW M.ATK Debuff (I)" +
                 "\n!aidW Replenish Magic (I)" +
                 "\n!aidW Support```", false);
@@ -124,7 +124,7 @@ public class MessageManager {
                 "\n!StoryA Ranged Water Soul" +
                 "\n!StoryA Ranged Water Soul```", false);
         helper.addField("!setEfect", "```Show all armor with the set effect searched."
-                + "\n" + "\nExamples:" + "\n!ColoSkill Zephyr Fairy Mastery (II)" +
+                + "\n" + "\nExamples:" + "\n!coloA Zephyr Fairy Mastery (II)" +
                 "\n!coloA Human Hunter's Soul" +
                 "\n!coloA Hunter's Soul" +
                 "\n!coloA Machine Lifeform and Emil's Hunting Spirit```", false);

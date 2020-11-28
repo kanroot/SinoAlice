@@ -163,7 +163,7 @@ public class Armors {
         var nameColo = extraerNameColo(armors);
         var element = convertirImg(armors);
         var settotal = extraerSetTotal(armors);
-        var card = extraerCard(armors);
+        var img = extraerCard(armors);
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
         dicArmor.put("NAME", nombre);
         dicArmor.put("TYPE", type);
@@ -176,7 +176,7 @@ public class Armors {
         dicArmor.put("NAMECOLO", nameColo);
         dicArmor.put("ELEMENT", element);
         dicArmor.put("SETTOTAL", settotal);
-        dicArmor.put("IMG", card);
+        dicArmor.put("IMG", img);
         return dicArmor;
     }
 

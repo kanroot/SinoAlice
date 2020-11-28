@@ -188,6 +188,7 @@ public class Commands extends ListenerAdapter {
                         MessageManager.pestanaWeapons(event, stringStringHashMap);
                     }
                 }
+                break;
             case Main.prefix + "COLOW":
                 if (args.length >= 2) {
                     StringBuilder nameC = new StringBuilder();
@@ -200,6 +201,7 @@ public class Commands extends ListenerAdapter {
                         MessageManager.pestanaWeapons(event, stringStringHashMap);
                     }
                 }
+                break;
             case Main.prefix + "STORYA":
                 if (args.length >= 2) {
                     StringBuilder nameS = new StringBuilder();
@@ -212,6 +214,7 @@ public class Commands extends ListenerAdapter {
                         MessageManager.pestanaArmor(event, stringStringHashMap);
                     }
                 }
+                break;
             case Main.prefix + "SETEFFECT":
                 if (args.length >= 2) {
                     StringBuilder nameC = new StringBuilder();
@@ -272,6 +275,7 @@ public class Commands extends ListenerAdapter {
 
                     }
                 }
+                break;
         }
 
     }
@@ -301,7 +305,7 @@ public class Commands extends ListenerAdapter {
     public ArrayList<String> armorsfind(String buscado) {
         ArrayList<String> namesArmors = new ArrayList<>();
         for (int i = 0; i < Main.armors.armor.size(); i++) {
-            if (Main.armors.armor.get(i).get("NAME").contains(buscado.toUpperCase())) {
+            if (Main.armors.armor.get(i).get(keyName).contains(buscado.toUpperCase())) {
                 int n = (i + 1);
                 namesArmors.add("**" + n + "**" + ". " + Main.armors.armor.get(i).get(keyName) + "\n");
             }
