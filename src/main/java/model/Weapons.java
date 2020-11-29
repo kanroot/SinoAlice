@@ -16,7 +16,7 @@ public class Weapons {
         String lineaI = "";
         String[] e;
         try {
-            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\assets\\data\\weapons.txt"));
+            Scanner input = new Scanner(new File(System.getenv("path") + "weapons.html"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {

@@ -15,7 +15,7 @@ public class Pj {
     private ArrayList<String> leertxt() {
         ArrayList<String> e = new ArrayList<>();
         try {
-            Scanner input = new Scanner(new File("C:\\Users\\GeoSS\\IdeaProjects\\SinoAlice\\assets\\data\\all_jobs.txt"));
+            Scanner input = new Scanner(new File( System.getenv("path") + "all_jobs.txt"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("Character：")) {

@@ -128,8 +128,21 @@ public class MessageManager {
                 "\n!coloA Human Hunter's Soul" +
                 "\n!coloA Hunter's Soul" +
                 "\n!coloA Machine Lifeform and Emil's Hunting Spirit```", false);
-        helper.addField("!class", "```Show jobs with the name's pj and job (Mage/Gunner/Alternative" +
-                "Half-Nightmare/Minstrel/Sorcerer/Cleric/Paladin/Breaker/Invader/Poacher/Crusher)."
+        helper.addField("!class", "```Show jobs with the name's pj and job.\n"
+                +"\nPjs:\n" +
+                "[Alice, Snow White, Red Riding Hood,\n" +
+                "Cinderella, Pinocchio, Little Mermaid,\n" +
+                "Gretel, Briar Rose, Kaguya,\n" +
+                "Dorothy, Nutcracker,Three Little Piggies,\n" +
+                "Nier, Young Nier, Kaine,\n" +
+                "Young Emil, Devola&Popola,\n" +
+                "Emil Clone, 2B,\n" +
+                "9S, 2A and Emil]\n"
+                + "\nJobs:\n"
+                + "[Mage, Gunner, Alternative\n"
+                + "Half-Nightmare, Minstrel, Sorcerer\n"
+                + "Cleric, Paladin, Breaker, Invader,\n"
+                + "Poacher and Crusher]."
                 + "\n" + "\nExamples:" +
                 "\n!class 2b" +
                 "\n!class 2b breaker" +

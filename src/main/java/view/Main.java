@@ -20,7 +20,10 @@ public class Main {
 
 
     public static void main(String []args) throws LoginException {
-        HelloWorld.main(args);
+        if (System.getenv("ENTORNO").equals("PRODUCTION")) {
+            HelloWorld.main(args);
+        }
+
         JDA jda = JDABuilder.createDefault(System.getenv("token")).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.getPresence().setActivity(Activity.playing("SINoAlice"));

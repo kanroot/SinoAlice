@@ -229,8 +229,8 @@ public class Commands extends ListenerAdapter {
                 }
             case Main.prefix + "CLASS":
                 StringBuilder jobs = new StringBuilder();
-                String jobClass = "";
-                String nameJob = "";
+                String jobClass = null;
+                String nameJob = null;
                 if (args.length >= 2) {
                     for (int i = 1; i < args.length; i++) {
                         jobs.append(args[i].toUpperCase()).append(" ");
@@ -262,17 +262,19 @@ public class Commands extends ListenerAdapter {
                                 break;
                         }
                     }
-                    if (nameJob.equals(jobs.toString()) && nameJob.contains(jobClass)) {
-                        var pjfind = Main.pjs.find(nameJob);
-                        for (HashMap<String, String> stringStringHashMap : pjfind) {
-                            MessageManager.pestanaClass(event, stringStringHashMap);
-                        }
-                    } else {
-                        var pjfind = Main.pjs.find(nameJob, jobClass);
-                        for (HashMap<String, String> stringStringHashMap : pjfind) {
-                            MessageManager.pestanaClass(event, stringStringHashMap);
-                        }
+                    if (nameJob != null) {
+                        if (nameJob.equals(jobs.toString()) && nameJob.contains(jobClass)) {
+                            var pjfind = Main.pjs.find(nameJob);
+                            for (HashMap<String, String> stringStringHashMap : pjfind) {
+                                MessageManager.pestanaClass(event, stringStringHashMap);
+                            }
+                        } else {
+                            var pjfind = Main.pjs.find(nameJob, jobClass);
+                            for (HashMap<String, String> stringStringHashMap : pjfind) {
+                                MessageManager.pestanaClass(event, stringStringHashMap);
+                            }
 
+                        }
                     }
                 }
                 break;
