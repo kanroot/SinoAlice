@@ -18,7 +18,7 @@ public class Armors {
         String lineaI = "";
         String[] e;
         try {
-            Scanner input = new Scanner(new File(System.getenv("path") + "armors.txt"));
+            Scanner input = new Scanner(new File(System.getenv("path") + "Armor.html"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {

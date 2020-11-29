@@ -16,7 +16,7 @@ public class Nigthmares {
         String lineaI = "";
         String[] e;
         try {
-            Scanner input = new Scanner(new File(System.getenv("path") + "nightmares.txt"));
+            Scanner input = new Scanner(new File(System.getenv("path") + "Nightmares.html"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {

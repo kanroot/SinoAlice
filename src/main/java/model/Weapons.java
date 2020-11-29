@@ -16,7 +16,7 @@ public class Weapons {
         String lineaI = "";
         String[] e;
         try {
-            Scanner input = new Scanner(new File(System.getenv("path") + "weapons.html"));
+            Scanner input = new Scanner(new File(System.getenv("path") + "Weapons.html"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {
