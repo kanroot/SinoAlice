@@ -18,7 +18,7 @@ public class Armors {
         String lineaI = "";
         String[] e;
         try {
-            Scanner input = new Scanner(new File(System.getenv("path") + "Armor.html"));
+            Scanner input = new Scanner(new File(System.getenv("path") + "Armor.txt"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {
@@ -195,16 +195,6 @@ public class Armors {
             }
         }
         return new HashMap<>();
-    }
-
-    public ArrayList<HashMap<String, String>> buscare(String element) {
-        ArrayList<HashMap<String, String>> f = new ArrayList<>();
-        for (HashMap<String, String> armor : armor) {
-            if (armor.get("ELEMENT").equalsIgnoreCase(element)) {
-                f.add(armor);
-            }
-        }
-        return f;
     }
 
     public ArrayList<HashMap<String, String>> filtroElemType(String element, String type, String filtro) {

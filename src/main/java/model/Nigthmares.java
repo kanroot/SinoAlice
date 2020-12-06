@@ -12,22 +12,22 @@ public class Nigthmares {
     public ArrayList<HashMap<String, String>> night = new ArrayList<>();
 
     private String[] leertxt() {
-        String s2 = "</tr><tr><td class=\"colCompare\">";
-        String lineaI = "";
+        String s2 = "</tr><tr><td class=\"colCompare\"";
+        StringBuilder lineaI = new StringBuilder();
         String[] e;
         try {
-            Scanner input = new Scanner(new File(System.getenv("path") + "Nightmares.html"));
+            Scanner input = new Scanner(new File(System.getenv("path") + "Nightmares.txt"));
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 if (line.contains("enname")) {
-                    lineaI = line;
+                    lineaI.append(line);
                 }
             }
             input.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        e = lineaI.split(s2);
+        e = lineaI.toString().split(s2);
         return e;
     }
 
