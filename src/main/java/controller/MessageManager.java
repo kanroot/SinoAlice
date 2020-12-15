@@ -17,7 +17,7 @@ public class MessageManager {
         info.setDescription("All content and materials are trademarks and copyrights of " +
                 "[Pokelabo Inc./SQUARE ENIX CO., LTD.] All rights reserved.");
         info.addField("Creator", "By KAN", false);
-        info.addField("Version", "1.4.1", false);
+        info.addField("Version", "1.5.1", false);
         info.setColor(Color.cyan);
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(info.build()).queue();
@@ -230,24 +230,32 @@ public class MessageManager {
     public static void pestanaWeapons(MessageReceivedEvent event, HashMap<String, String> hashMap) {
         String title = hashMap.get(keyName);
         String url = hashMap.get("IMG");
-        String description = "**Colosseum  skill**: " + "```fix"
-                + "\n" + hashMap.get("NAMECOLO") + ": "
-                + hashMap.get("SKILL") + "```"
-                + "\n" + "**Colosseum Aid Skill**: " + "```fix"
-                + "\n" + hashMap.get("AID") + ": "
-                + hashMap.get("COLOSKILL") + "```" + "\n"
-                + "**Level**: " + hashMap.get("LVL") + "```ELM"
-                + "\n" + "Type: " + hashMap.get("TYPE")
-                + "\t" + "P.Atk: " + hashMap.get("PATK")
-                + "\t" + "P.Def: " + hashMap.get("PDEF")
-                + "\t" + "M.Atk: " + hashMap.get("MATK")
-                + "\t" + "M.Def: " + hashMap.get("MDEF")
-                + "\t" + "Total: " + hashMap.get("TOTAL")
-                + "\t" + "Tt.ATK: " + hashMap.get("TTATK")
-                + "\t" + "Tt.Def: " + hashMap.get("TTDEF")
-                + "\t" + "PATK+Tt.Def: " + hashMap.get("PATKTTDEF")
-                + "\t" + "M.Atk+Tt.Def: " + hashMap.get("MATKTTDEF") + "```" + "```YAML"
-                + "\n" + "Element: " + hashMap.get("ELEMENT") + "```";
+        String fix =  "```fix";
+        String end = "```";
+        String elm = "```ELM";
+        String description =
+                "**Colosseum  skill**: " + fix + "\n" + hashMap.get("NAMECOLO") + ":" +
+                hashMap.get("COLOSKILL") + end
+                + "\n" + "**Story Skill**: " + fix
+                + "\n" + hashMap.get("SKILL") + ":"
+                + hashMap.get("STORYSKILL") + end
+                + "\n" + "**Colosseum Aid Skill**:" + fix
+                + "\n" + hashMap.get("NAMEAID") + ":"
+                + hashMap.get("AID") + end
+                + "**Level**: " + hashMap.get("LVL") + elm
+                + "\n" + "Type:" + hashMap.get("TYPE") + end + elm
+                + "\n" + "P.Atk:" + hashMap.get("PATK")
+                + "\t" + "P.Def:" + hashMap.get("PDEF") + end + elm
+                + "\n" + "M.Atk:" + hashMap.get("MATK")
+                + "\t" + "M.Def:" + hashMap.get("MDEF") + end + elm
+                + "\n" + "Total:" + hashMap.get("TOTAL")
+                + "\t" + "Tt.ATK:" + hashMap.get("TTATK") + end + elm
+                + "\n" + "Tt.Def:" + hashMap.get("TTDEF")
+                + "\t" + "PAtk+Tt.Def:" + hashMap.get("PATKTTDEF") + end + elm
+                + "\n" + "M.Atk+Tt.Def:" + hashMap.get("MATKTTDEF")
+                + "\t" + "Cost:" + hashMap.get("COST")
+                + "```" + "```YAML"
+                + "\n" + "Element:" + hashMap.get("ELEMENT") + end;
         jdaStandard(title, url, description, jdaColor(hashMap.get("ELEMENT")), event);
     }
 

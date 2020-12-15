@@ -23,7 +23,7 @@ public class Nigthmares {
         //COLECCION DE LLAVES Y VALORES
         HashMap<String, String> dicNightmare = new HashMap<>();
 
-        var name = nightmare.get("NAME").toString().toUpperCase();
+        var name = nightmare.get("NAME").toString().toUpperCase()+ " ";
         var pAtk = nightmare.get("PATK").toString();
         var pDef = nightmare.get("PDEF").toString();
         var mAtk = nightmare.get("MATK").toString();
@@ -44,8 +44,8 @@ public class Nigthmares {
         var matkttdef = nightmare.get("MATKTTDEF").toString();
         var time = nightmare.get("PREPARATION").toString();
         var duration = nightmare.get("DURATION").toString();
-        var nameStorySkill = nightmare.get("TITLESTORY").toString();
-        var nameColo = nightmare.get("TITLECOLO").toString();
+        var nameStorySkill = nightmare.get("TITLESTORY").toString().toUpperCase();
+        var nameColo = nightmare.get("TITLECOLO").toString().toUpperCase();
         var img = extraerCard(nightmare.get("Cards").toString());
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
         dicNightmare.put("NAME", name);

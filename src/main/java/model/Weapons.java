@@ -1,6 +1,7 @@
 package model;
 
-import java.io.File;
+import controller.JsonReader;
+import org.json.simple.JSONObject;
 import java.util.*;
 
 public class Weapons {
@@ -11,205 +12,51 @@ public class Weapons {
         generarWeapon();
     }
 
-    private String[] leertxt() {
-        String s2 = "</div></td></tr><tr>";
-        String lineaI = "";
-        String[] e;
-        try {
-            Scanner input = new Scanner(new File(System.getenv("path") + "Weapons.txt"));
-            while (input.hasNextLine()) {
-                String line = input.nextLine();
-                if (line.contains("enname")) {
-                    lineaI = line;
-                }
-            }
-            input.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        e = lineaI.split(s2);
-        return e;
-    }
-
-    public String extraerUnNom(String e) {
-        int reference = e.lastIndexOf("enname");
-        int initialpos = e.indexOf("\">", reference);
-        int lastpos = e.indexOf("</a>", reference);
-        return e.substring(initialpos + 2, lastpos) + " ";
-    }
-
-    public String extraertype(String e) {
-        int reference = e.lastIndexOf("eqtypeImg");
-        int initialpos = e.indexOf("<br>", reference);
-        int lastpos = e.indexOf("</span>", reference);
-        return e.substring(initialpos + 4, lastpos);
-    }
-
-    //convertir img
     public String convertirImg(String s) {
-        var e = extraerImagen(s);
         String j = "";
-        if (e.contains("002")) {
+        if (s.contains("002")) {
             j = "Water";
         }
-        if (e.contains("003")) {
+        if (s.contains("003")) {
             j = "Wind";
         }
-        if (e.contains("001")) {
+        if (s.contains("001")) {
             j = "Fire";
         }
         return j;
     }
 
-    //img
-    public String extraerImagen(String s) {
-        int reference = s.lastIndexOf("attrImg");
-        int initialpos = s.indexOf("src", reference) + 5;
-        int postfinal = s.indexOf("\">", initialpos);
-        return (s.substring(initialpos, postfinal));
-
-    }
-
     public String extraerCard(String s) {
-        int initialpos = s.indexOf("/CardS");
-        int postfinal = s.indexOf("\">", initialpos);
-        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/assets/img_weapons" + s.substring(initialpos, postfinal));
-    }
-
-    public String extraerPatk(String s) {
-        int reference = s.indexOf("colMaxPAtk");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-
-    }
-
-    public String extraerPDef(String s) {
-        int reference = s.indexOf("colMaxPDef");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    public String extraerMatk(String s) {
-        int reference = s.indexOf("colMaxMAtk");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    public String extraerMDef(String s) {
-        int reference = s.indexOf("colMaxMDef");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    public String extraerTotal(String s) {
-        int reference = s.indexOf("colMaxTotal");
-        int initialpos = s.indexOf("bold\">", reference);
-        int lastpos = s.indexOf("<br>", initialpos);
-        return s.substring(initialpos + 6, lastpos);
-    }
-
-    //nivel inicial
-    public String extraerlvl(String s) {
-        int reference = s.indexOf("bold");
-        int initialpos = s.indexOf("br>", reference);
-        int lastpos = s.indexOf("</", reference);
-        return s.substring(initialpos + 3, lastpos);
-    }
-
-    //Tt.ATK colMaxTotalAtk
-    public String extraerTtATK(String s) {
-        int reference = s.indexOf("colMaxTotalAtk");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //Tt.DEF colMaxTotalAtk
-    public String extraerTtDef(String s) {
-        int reference = s.indexOf("colMaxTotalDef");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //colMaxAtkImp PATK + TT.DEF
-    public String extraermaxAtkImp(String s) {
-        int reference = s.indexOf("colMaxAtkImp");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //colMaxMAtkImp MATK + DEF
-    public String extraermaxMatkImp(String s) {
-        int reference = s.indexOf("colMaxMAtkImp");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //ST.SKILL
-    public String extraerSkillbase(String s) {
-        int reference = s.indexOf("tableDetail en");
-        int initialpos = s.indexOf("\">", reference);
-        int lastpos = s.indexOf("</div>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //COLO SKILL
-    public String extraerSkillcolo(String s) {
-        int reference = s.lastIndexOf("colGvgAidSkill");
-        int initialpos = s.indexOf("</div><div class=\"tableDetail en\">", reference);
-        int lastpos = s.indexOf(".", initialpos);
-        return (s.substring(initialpos + 34, lastpos));
-    }
-
-    //NAME COLO SKILL
-    public String extraerNameColo(String s) {
-        int reference = s.indexOf("battleImg");
-        int initialpos = s.indexOf("\">", reference);
-        String j = (s.substring(initialpos));
-        int postfinal = j.indexOf("</div>") + 1;
-        return (j.substring(3, postfinal - 1).toUpperCase());
-    }
-
-    //AID
-    public String extraerCAid(String s) {
-        int reference = s.lastIndexOf("battleImg");
-        int initialpos = s.indexOf("\">", reference);
-        String j = (s.substring(initialpos));
-        int postfinal = j.indexOf("</div>") + 1;
-        return (j.substring(3, postfinal - 1).toUpperCase());
+        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/assets/img_weapons/" + s);
     }
 
 
-    public HashMap<String, String> crearDic(String weapons) {
+    public HashMap<String, String> crearDic(JSONObject weaponsData) {
         //UNICO DICCIONARIO
         //COLECCION DE LLAVES Y VALORES
         HashMap<String, String> dicWeapon = new HashMap<>();
 
-        var nombre = extraerUnNom(weapons).toUpperCase();
-        var type = extraertype(weapons);
-        var element = convertirImg(weapons);
-        var Patk = extraerPatk(weapons);
-        var PDef = extraerPDef(weapons);
-        var Matk = extraerMatk(weapons);
-        var mDef = extraerMDef(weapons);
-        var total = extraerTotal(weapons);
-        var lvl = extraerlvl(weapons);
-        var tTATK = extraerTtATK(weapons);
-        var tTDef = extraerTtDef(weapons);
-        var pAtkTTdef = extraermaxAtkImp(weapons);
-        var mAtkTtDef = extraermaxMatkImp(weapons);
-        var skill = extraerSkillbase(weapons);
-        var coloSkill = extraerSkillcolo(weapons);
-        var nameColoSkill = extraerNameColo(weapons);
-        var aidskill = extraerCAid(weapons);
-        var img = extraerCard(weapons);
+        var nombre = weaponsData.get("NAME").toString().toUpperCase() + " ";
+        var type = weaponsData.get("TYPE").toString();
+        var element = convertirImg(weaponsData.get("ELEMENT").toString());
+        var Patk = weaponsData.get("PATK").toString();
+        var PDef = weaponsData.get("PDEF").toString();
+        var Matk = weaponsData.get("MATK").toString();
+        var mDef = weaponsData.get("MDEF").toString();
+        var total = weaponsData.get("TOTAL").toString();
+        var lvl = weaponsData.get("LVL").toString();
+        var tTATK = weaponsData.get("TTATK").toString();
+        var tTDef = weaponsData.get("TTDEF").toString();
+        var pAtkTTdef = weaponsData.get("PATKTTDEF").toString();
+        var mAtkTtDef = weaponsData.get("MATKTTDEF").toString();
+        var skill = weaponsData.get("STORY").toString().toUpperCase();
+        var skillStory =   weaponsData.get("SKILLSTORY").toString();
+        var coloSkill = weaponsData.get("SKILLCOLO").toString();
+        var nameColoSkill = weaponsData.get("COLO").toString().toUpperCase();
+        var nameAid = weaponsData.get("AID").toString().toUpperCase();
+        var aidskill = weaponsData.get("SKILLAID").toString();
+        var cost = weaponsData.get("COST").toString();
+        var img = extraerCard(weaponsData.get("CARD").toString());
 
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
         dicWeapon.put("NAME", nombre);
@@ -224,21 +71,26 @@ public class Weapons {
         dicWeapon.put("TTDEF", tTDef);
         dicWeapon.put("PATKTTDEF", pAtkTTdef);
         dicWeapon.put("MATKTTDEF", mAtkTtDef);
+        dicWeapon.put("STORYSKILL", skillStory);
         dicWeapon.put("SKILL", skill);
-        dicWeapon.put("COLOSKILL", coloSkill);
         dicWeapon.put("NAMECOLO", nameColoSkill);
+        dicWeapon.put("COLOSKILL", coloSkill);
         dicWeapon.put("ELEMENT", element);
+        dicWeapon.put("NAMEAID", nameAid);
         dicWeapon.put("AID", aidskill);
         dicWeapon.put("IMG", img);
+        dicWeapon.put("COST", cost);
         return dicWeapon;
     }
 
     public void generarWeapon() {
-        var leer = leertxt();
-        for (String s : leer) {
-            var valores = crearDic(s);
-            weapons.add(valores);
+        var jsonArray = JsonReader.parserJson("Weapons");
+        for (Object o : jsonArray) {
+            JSONObject jsonObject = (JSONObject) o;
+            var dic = crearDic(jsonObject);
+            weapons.add(dic);
         }
+
     }
 
     public HashMap<String, String> buscar(String buscado) {
@@ -253,25 +105,6 @@ public class Weapons {
     public HashMap<String, String> buscar(int buscado) {
 
         return weapons.get(buscado - 1);
-    }
-
-    public ArrayList<HashMap<String, String>> buscare(String element) {
-        ArrayList<HashMap<String, String>> f = new ArrayList<>();
-        if (element.equalsIgnoreCase("fire") || element.equalsIgnoreCase("wind") ||
-                element.equalsIgnoreCase("water")) {
-            for (HashMap<String, String> weapon : weapons) {
-                if (weapon.get("ELEMENT").equalsIgnoreCase(element)) {
-                    f.add(weapon);
-                }
-            }
-        } else {
-            for (HashMap<String, String> weapon : weapons) {
-                if (weapon.get("TYPE").equalsIgnoreCase(element)) {
-                    f.add(weapon);
-                }
-            }
-        }
-        return f;
     }
 
     public ArrayList<HashMap<String, String>> filtroElemType(String element, String type, String filtro) {
