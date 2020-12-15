@@ -129,7 +129,7 @@ public class MessageManager {
                 "\n!coloA Hunter's Soul" +
                 "\n!coloA Machine Lifeform and Emil's Hunting Spirit```", false);
         helper.addField("!class", "```Show jobs with the name's pj and job.\n"
-                +"\nPjs:\n" +
+                + "\nPjs:\n" +
                 "Alice, Snow White, Red Riding Hood,\n" +
                 "Cinderella, Pinocchio, Little Mermaid,\n" +
                 "Gretel, Briar Rose, Kaguya,\n" +
@@ -230,32 +230,32 @@ public class MessageManager {
     public static void pestanaWeapons(MessageReceivedEvent event, HashMap<String, String> hashMap) {
         String title = hashMap.get(keyName);
         String url = hashMap.get("IMG");
-        String fix =  "```fix";
+        String fix = "```fix";
         String end = "```";
         String elm = "```ELM";
         String description =
                 "**Colosseum  skill**: " + fix + "\n" + hashMap.get("NAMECOLO") + ":" +
-                hashMap.get("COLOSKILL") + end
-                + "\n" + "**Story Skill**: " + fix
-                + "\n" + hashMap.get("SKILL") + ":"
-                + hashMap.get("STORYSKILL") + end
-                + "\n" + "**Colosseum Aid Skill**:" + fix
-                + "\n" + hashMap.get("NAMEAID") + ":"
-                + hashMap.get("AID") + end
-                + "**Level**: " + hashMap.get("LVL") + elm
-                + "\n" + "Type:" + hashMap.get("TYPE") + end + elm
-                + "\n" + "P.Atk:" + hashMap.get("PATK")
-                + "\t" + "P.Def:" + hashMap.get("PDEF") + end + elm
-                + "\n" + "M.Atk:" + hashMap.get("MATK")
-                + "\t" + "M.Def:" + hashMap.get("MDEF") + end + elm
-                + "\n" + "Total:" + hashMap.get("TOTAL")
-                + "\t" + "Tt.ATK:" + hashMap.get("TTATK") + end + elm
-                + "\n" + "Tt.Def:" + hashMap.get("TTDEF")
-                + "\t" + "PAtk+Tt.Def:" + hashMap.get("PATKTTDEF") + end + elm
-                + "\n" + "M.Atk+Tt.Def:" + hashMap.get("MATKTTDEF")
-                + "\t" + "Cost:" + hashMap.get("COST")
-                + "```" + "```YAML"
-                + "\n" + "Element:" + hashMap.get("ELEMENT") + end;
+                        hashMap.get("COLOSKILL") + end
+                        + "\n" + "**Story Skill**: " + fix
+                        + "\n" + hashMap.get("SKILL") + ":"
+                        + hashMap.get("STORYSKILL") + end
+                        + "\n" + "**Colosseum Aid Skill**:" + fix
+                        + "\n" + hashMap.get("NAMEAID") + ":"
+                        + hashMap.get("AID") + end
+                        + "**Level**: " + hashMap.get("LVL") + elm
+                        + "\n" + "Type:" + hashMap.get("TYPE") + end + elm
+                        + "\n" + "P.Atk:" + hashMap.get("PATK")
+                        + "\t" + "P.Def:" + hashMap.get("PDEF") + end + elm
+                        + "\n" + "M.Atk:" + hashMap.get("MATK")
+                        + "\t" + "M.Def:" + hashMap.get("MDEF") + end + elm
+                        + "\n" + "Total:" + hashMap.get("TOTAL")
+                        + "\t" + "Tt.ATK:" + hashMap.get("TTATK") + end + elm
+                        + "\n" + "Tt.Def:" + hashMap.get("TTDEF")
+                        + "\t" + "PAtk+Tt.Def:" + hashMap.get("PATKTTDEF") + end + elm
+                        + "\n" + "M.Atk+Tt.Def:" + hashMap.get("MATKTTDEF")
+                        + "\t" + "Cost:" + hashMap.get("COST")
+                        + "```" + "```YAML"
+                        + "\n" + "Element:" + hashMap.get("ELEMENT") + end;
         jdaStandard(title, url, description, jdaColor(hashMap.get("ELEMENT")), event);
     }
 

@@ -23,7 +23,7 @@ public class Nigthmares {
         //COLECCION DE LLAVES Y VALORES
         HashMap<String, String> dicNightmare = new HashMap<>();
 
-        var name = nightmare.get("NAME").toString().toUpperCase()+ " ";
+        var name = nightmare.get("NAME").toString().toUpperCase() + " ";
         var pAtk = nightmare.get("PATK").toString();
         var pDef = nightmare.get("PDEF").toString();
         var mAtk = nightmare.get("MATK").toString();

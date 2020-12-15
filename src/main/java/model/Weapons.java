@@ -2,6 +2,7 @@ package model;
 
 import controller.JsonReader;
 import org.json.simple.JSONObject;
+
 import java.util.*;
 
 public class Weapons {
@@ -50,7 +51,7 @@ public class Weapons {
         var pAtkTTdef = weaponsData.get("PATKTTDEF").toString();
         var mAtkTtDef = weaponsData.get("MATKTTDEF").toString();
         var skill = weaponsData.get("STORY").toString().toUpperCase();
-        var skillStory =   weaponsData.get("SKILLSTORY").toString();
+        var skillStory = weaponsData.get("SKILLSTORY").toString();
         var coloSkill = weaponsData.get("SKILLCOLO").toString();
         var nameColoSkill = weaponsData.get("COLO").toString().toUpperCase();
         var nameAid = weaponsData.get("AID").toString().toUpperCase();

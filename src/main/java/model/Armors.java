@@ -2,6 +2,7 @@ package model;
 
 import controller.JsonReader;
 import org.json.simple.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -53,7 +54,7 @@ public class Armors {
         var nameColo = armorData.get("COLO").toString().toUpperCase();
         var element = convertirImg(armorData.get("ELEMENT").toString());
         var settotal = armorData.get("SETTOTAL").toString();
-        var img = extraerCard( armorData.get("CARD").toString());
+        var img = extraerCard(armorData.get("CARD").toString());
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
         dicArmor.put("NAME", nombre);
         dicArmor.put("TYPE", type);
