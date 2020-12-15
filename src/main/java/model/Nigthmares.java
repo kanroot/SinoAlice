@@ -1,6 +1,8 @@
 package model;
 
-import java.io.File;
+import controller.JsonReader;
+import org.json.simple.JSONObject;
+
 import java.util.*;
 
 public class Nigthmares {
@@ -11,249 +13,40 @@ public class Nigthmares {
 
     public ArrayList<HashMap<String, String>> night = new ArrayList<>();
 
-    private String[] leertxt() {
-        String s2 = "</tr><tr><td class=\"colCompare\"";
-        StringBuilder lineaI = new StringBuilder();
-        String[] e;
-        try {
-            Scanner input = new Scanner(new File(System.getenv("path") + "Nightmares.txt"));
-            while (input.hasNextLine()) {
-                String line = input.nextLine();
-                if (line.contains("enname")) {
-                    lineaI.append(line);
-                }
-            }
-            input.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        e = lineaI.toString().split(s2);
-        return e;
+
+    public String extraerCard(String nightmare) {
+        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/assets/img_nightmares/" + nightmare);
     }
 
-    //nivel base
-    public String extraerUnNom(String e) {
-        int reference = e.lastIndexOf("enname");
-        int initialpos = e.indexOf("\">", reference);
-        int lastpos = e.indexOf("</a>", initialpos);
-        return e.substring(initialpos + 2, lastpos) + " ";
-    }
-
-    //patk
-    public String extraerPatk(String s) {
-        int reference = s.indexOf("colFullPAtk");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //pDef
-    public String extraerpDef(String s) {
-        int reference = s.indexOf("colFullPDef");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //matk
-    public String extraerMatk(String s) {
-        int reference = s.indexOf("colFullMAtk");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //mdef
-    public String extraermdef(String s) {
-        int reference = s.indexOf("colFullMDef");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //total
-    public String extraerTotal(String s) {
-        int reference = s.indexOf("colFullTotal");
-        int initialpos = s.indexOf("bold\">", reference);
-        int lastpos = s.indexOf("<br>", reference);
-        return s.substring(initialpos + 6, lastpos);
-    }
-
-    //nivel inicial
-    public String extraerlvl(String s) {
-        int reference = s.indexOf("bold");
-        int initialpos = s.indexOf("br>", reference);
-        int lastpos = s.indexOf("</", reference);
-        return s.substring(initialpos + 3, lastpos);
-    }
-
-    //PATKFULL
-    public String extraerpatkFull(String s) {
-        int reference = s.lastIndexOf("colMaxPAtk");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</", reference);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //PDEFFULL
-    public String extraerFullpDef(String s) {
-        int reference = s.lastIndexOf("colMaxPDef");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</", reference);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //MAtkFULL
-    public String extraerFullMaxMAtk(String s) {
-        int reference = s.indexOf("colMaxMAtk");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</", reference);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //MDEFFULL
-    public String extraerFullMDef(String s) {
-        int reference = s.indexOf("colMaxMDef");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</", reference);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //fulltotal
-
-    public String extraerfullTotal(String s) {
-        int reference = s.indexOf("colMaxTotal");
-        int initialpos = s.indexOf("bold", reference);
-        int lastpos = s.indexOf("<br>", reference);
-        return (s.substring(initialpos + 6, lastpos));
-    }
-
-    //fulllvl
-
-    public String extraerfulllvl(String s) {
-        int reference = s.indexOf("colMaxTotal");
-        int initialpos = s.indexOf("<br>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 4, lastpos));
-    }
-    //ST.SKILL
-
-    public String extraerSkillbase(String s) {
-        int reference = s.lastIndexOf("questTitle");
-        int initialpos = s.indexOf("tableDetail en\"", reference);
-        int lastpos = s.indexOf("</div>", initialpos + 16);
-        return (s.substring(initialpos + 16, lastpos));
-    }
-
-    //NAME STORYSKILL
-    public String extraerStorySkill(String s) {
-        int reference = s.indexOf("battleImg");
-        int initialpos = s.indexOf("\">", reference);
-        int lastpos = s.indexOf("</div>", initialpos);
-        return (s.substring(initialpos + 3, lastpos)).toUpperCase();
-    }
-
-    //COLO SKILL
-    public String extrarColoSkill(String s) {
-        int reference = s.lastIndexOf("gvgTitle");
-        int initialpos = s.indexOf("tableDetail en", reference) + 16;
-        String j = (s.substring(initialpos));
-        int postfinal = j.indexOf(".") + 1;
-        return (j.substring(0, postfinal));
-    }
-
-    //NAME SKILL
-    public String extraerNameColo(String s) {
-        int reference = s.lastIndexOf("battleImg");
-        int initialpos = s.indexOf("\">", reference);
-        String j = (s.substring(initialpos));
-        int postfinal = j.indexOf("</div>") + 1;
-        return (j.substring(3, postfinal - 1)).toUpperCase();
-    }
-
-    //OTROS
-    //Tt.ATK colMaxTotalAtk
-    public String extraerTtATK(String s) {
-        int reference = s.indexOf("colMaxTotalAtk");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //Tt.DEF colMaxTotalAtk
-    public String extraerTtDef(String s) {
-        int reference = s.indexOf("colMaxTotalDef");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //colMaxAtkImp PATK + TT.DEF
-    public String extraermaxAtkImp(String s) {
-        int reference = s.indexOf("colMaxAtkImp");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //colMaxMAtkImp
-    public String extraermaxMatkImp(String s) {
-        int reference = s.indexOf("colMaxMAtkImp");
-        int initialpos = s.indexOf("n>", reference);
-        int lastpos = s.indexOf("</span>", initialpos);
-        return (s.substring(initialpos + 2, lastpos));
-    }
-
-    //colGvgSkillLead
-    public String extraerTimePre(String s) {
-        int reference = s.indexOf("colGvgSkillLead");
-        int initialpos = s.indexOf(">", reference);
-        int lastpos = s.indexOf("</", initialpos);
-        return (s.substring(initialpos + 1, lastpos));
-    }
-
-    public String extraerTimeDuration(String s) {
-        int reference = s.indexOf("colGvgSkillDur");
-        int initialpos = s.indexOf(">", reference);
-        int lastpos = s.indexOf("</td>", initialpos);
-        return (s.substring(initialpos + 1, lastpos));
-    }
-
-    public String extraerCard(String s) {
-        int initialpos = s.indexOf("/CardS");
-        int postfinal = s.indexOf("\">", initialpos);
-        return ("https://raw.githubusercontent.com/kanroot/SinoAlice/master/assets/img_nightmares/" + s.substring(initialpos, postfinal));
-    }
-
-    public HashMap<String, String> crearDic(String nightmare) {
+    public HashMap<String, String> crearDic(JSONObject nightmare) {
         //UNICO DICCIONARIO
         //COLECCION DE LLAVES Y VALORES
         HashMap<String, String> dicNightmare = new HashMap<>();
 
-        var name = extraerUnNom(nightmare).toUpperCase();
-        var pAtk = extraerPatk(nightmare);
-        var pDef = extraerpDef(nightmare);
-        var mAtk = extraerMatk(nightmare);
-        var mDef = extraermdef(nightmare);
-        var total = extraerTotal(nightmare);
-        var lvl = extraerlvl(nightmare);
-        var ptkFull = extraerpatkFull(nightmare);
-        var fullPDef = extraerFullpDef(nightmare);
-        var fullMAtk = extraerFullMaxMAtk(nightmare);
-        var fullMDEF = extraerFullMDef(nightmare);
-        var maxTotal = extraerfullTotal(nightmare);
-        var fullLvl = extraerfulllvl(nightmare);
-        var skill = extraerSkillbase(nightmare);
-        var coloSkill = extrarColoSkill(nightmare);
-        var ttatk = extraerTtATK(nightmare);
-        var ttDef = extraerTtDef(nightmare);
-        var patkttdef = extraermaxAtkImp(nightmare);
-        var matkttdef = extraermaxMatkImp(nightmare);
-        var time = extraerTimePre(nightmare);
-        var duration = extraerTimeDuration(nightmare);
-        var nameStorySkill = extraerStorySkill(nightmare);
-        var nameColo = extraerNameColo(nightmare);
-        var img = extraerCard(nightmare);
+        var name = nightmare.get("NAME").toString().toUpperCase();
+        var pAtk = nightmare.get("PATK").toString();
+        var pDef = nightmare.get("PDEF").toString();
+        var mAtk = nightmare.get("MATK").toString();
+        var mDef = nightmare.get("MDEF").toString();
+        var total = nightmare.get("TOTAL").toString();
+        var lvl = nightmare.get("LVL").toString();
+        var ptkFull = nightmare.get("MAXPATK").toString();
+        var fullPDef = nightmare.get("MAXPDEF").toString();
+        var fullMAtk = nightmare.get("MAXMATK").toString();
+        var fullMDEF = nightmare.get("MAXMDEF").toString();
+        var maxTotal = nightmare.get("MAXTOTAL").toString();
+        var fullLvl = nightmare.get("MAXLVL").toString();
+        var skill = nightmare.get("STORY").toString();
+        var coloSkill = nightmare.get("COLO").toString();
+        var ttatk = nightmare.get("TTATK").toString();
+        var ttDef = nightmare.get("TTDEF").toString();
+        var patkttdef = nightmare.get("PATKTTDEF").toString();
+        var matkttdef = nightmare.get("MATKTTDEF").toString();
+        var time = nightmare.get("PREPARATION").toString();
+        var duration = nightmare.get("DURATION").toString();
+        var nameStorySkill = nightmare.get("TITLESTORY").toString();
+        var nameColo = nightmare.get("TITLECOLO").toString();
+        var img = extraerCard(nightmare.get("Cards").toString());
         //METIENDO UNA LLAVE Y UN VALOR AL DICCIONARIO
         dicNightmare.put("NAME", name);
         dicNightmare.put("PATK", pAtk);
@@ -285,11 +78,11 @@ public class Nigthmares {
     }
 
     public void generarNightmare() {
-        var leer = leertxt();
+        var nightmaresData = JsonReader.parserJson("Nightmares");
 
-        for (String s : leer) {
-            var nightmare = crearDic(s);
-            night.add(nightmare);
+        for (Object nightmaresDatum : nightmaresData) {
+            JSONObject objectNight = (JSONObject) nightmaresDatum;
+            night.add(crearDic(objectNight));
         }
     }
 
@@ -350,5 +143,3 @@ public class Nigthmares {
     }
 
 }
-
-

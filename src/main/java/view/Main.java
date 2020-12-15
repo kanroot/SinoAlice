@@ -20,6 +20,8 @@ public class Main {
     public static Armors armors = new Armors();
     public static Weapons weapons = new Weapons();
     public static Pj pjs = new Pj();
+
+
     // define an eventwaiter, dont forget to add this to the JDABuilder!
 
 
