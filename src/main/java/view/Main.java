@@ -22,9 +22,6 @@ public class Main {
     public static Pj pjs = new Pj();
 
 
-    // define an eventwaiter, dont forget to add this to the JDABuilder!
-
-
     public static void main(String []args) throws LoginException {
         if (System.getenv("ENTORNO").equals("PRODUCTION")) {
             HelloWorld.main(args);
