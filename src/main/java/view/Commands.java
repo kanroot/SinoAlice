@@ -6,6 +6,7 @@ import java.util.HashMap;
 import controller.MessageManager;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.jetbrains.annotations.NotNull;
 
 public class Commands extends ListenerAdapter {
 
@@ -29,20 +30,18 @@ public class Commands extends ListenerAdapter {
                 if (args.length == 1) {
                     MessageManager.createList(event, nightmarePattern(" "), "All names of nightmares");
                 } else {
-                    MessageManager.createList(event, nightmarePattern(args[1]), "Matched");
+                    String pattern = getString(args);
+                    MessageManager.createList(event, nightmarePattern(pattern), "Matched");
                 }
                 break;
             case Main.prefix + "NN":
-                StringBuilder name = new StringBuilder();
+                String name;
                 if (args.length > 2) {
-                    for (int i = 1; i < args.length; i++) {
-                        name.append(args[i].toUpperCase()).append(" ");
-                    }
-                    name.deleteCharAt(name.lastIndexOf(" "));
+                    name = getString(args);
                 } else {
-                    name = new StringBuilder(args[1]);
+                    name = args[1];
                 }
-                searchNightmare(event, name.toString());
+                searchNightmare(event, name);
                 break;
             case Main.prefix + "MN":
                 var point = Main.nigthmares.point();
@@ -54,20 +53,18 @@ public class Commands extends ListenerAdapter {
                 if (args.length == 1) {
                     MessageManager.createList(event, armorsfind(" "), "All armors");
                 } else {
-                    MessageManager.createList(event, armorsfind(args[1]), "Matched");
+                    String pattern = getString(args);
+                    MessageManager.createList(event, armorsfind(pattern), "Matched");
                 }
                 break;
             case Main.prefix + "NA":
-                StringBuilder nameA = new StringBuilder();
+                String nameArmors;
                 if (args.length > 2) {
-                    for (int i = 1; i < args.length; i++) {
-                        nameA.append(args[i].toUpperCase()).append(" ");
-                    }
-                    nameA.deleteCharAt(nameA.lastIndexOf(" "));
+                    nameArmors = getString(args);
                 } else {
-                    nameA = new StringBuilder(args[1]);
+                    nameArmors = args[1];
                 }
-                searchA(event, nameA.toString());
+                searchA(event, nameArmors);
                 break;
             case Main.prefix + "MA":
                 var pointA = Main.armors.point();
@@ -102,23 +99,21 @@ public class Commands extends ListenerAdapter {
                 }
                 break;
             case Main.prefix + "W":
-                if (args[1].equalsIgnoreCase("all")) {
-                    MessageManager.createList(event, weaponsfind(" "), "Matched");
+                if (args.length == 1) {
+                    MessageManager.createList(event, weaponsfind(" "), "All weapons");
                 } else {
-                    MessageManager.createList(event, weaponsfind(args[1]), "Matched");
+                    String pattern = getString(args);
+                    MessageManager.createList(event, weaponsfind(pattern), "Matched");
                 }
                 break;
             case Main.prefix + "NW":
-                StringBuilder nameW = new StringBuilder();
+                String nameWeapon;
                 if (args.length > 2) {
-                    for (int i = 1; i < args.length; i++) {
-                        nameW.append(args[i].toUpperCase()).append(" ");
-                    }
-                    nameW.deleteCharAt(nameW.lastIndexOf(" "));
+                    nameWeapon = getString(args);
                 } else {
-                    nameW = new StringBuilder(args[1]);
+                    nameWeapon = args[1];
                 }
-                searchW(event, nameW.toString());
+                searchW(event, nameWeapon);
                 break;
             case Main.prefix + "MW":
                 var pointW = Main.weapons.point();
@@ -152,12 +147,8 @@ public class Commands extends ListenerAdapter {
                 break;
             case Main.prefix + "NSN":
                 if (args.length >= 2) {
-                    StringBuilder nameS = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
-                        nameS.append(args[i].toUpperCase()).append(" ");
-                    }
-                    nameS.deleteCharAt(nameS.lastIndexOf(" "));
-                    var buscado = Main.nigthmares.storySkill(nameS.toString());
+                    String nameStory = getString(args);
+                    var buscado = Main.nigthmares.storySkill(nameStory);
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaNightmare(event, stringStringHashMap);
                     }
@@ -165,12 +156,8 @@ public class Commands extends ListenerAdapter {
                 break;
             case Main.prefix + "NCN":
                 if (args.length >= 2) {
-                    StringBuilder nameC = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
-                        nameC.append(args[i].toUpperCase()).append(" ");
-                    }
-                    nameC.deleteCharAt(nameC.lastIndexOf(" "));
-                    var buscado = Main.nigthmares.coloSkill(nameC.toString());
+                    String nameColo = getString(args);
+                    var buscado = Main.nigthmares.coloSkill(nameColo);
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaNightmare(event, stringStringHashMap);
                     }
@@ -178,12 +165,8 @@ public class Commands extends ListenerAdapter {
                 break;
             case Main.prefix + "NCSW":
                 if (args.length >= 2) {
-                    StringBuilder nameS = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
-                        nameS.append(args[i].toUpperCase()).append(" ");
-                    }
-                    nameS.deleteCharAt(nameS.lastIndexOf(" "));
-                    var buscado = Main.weapons.aidSkill(nameS.toString());
+                    String nameAid = getString(args);
+                    var buscado = Main.weapons.aidSkill(nameAid);
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaWeapons(event, stringStringHashMap);
                     }
@@ -191,12 +174,8 @@ public class Commands extends ListenerAdapter {
                 break;
             case Main.prefix + "NCW":
                 if (args.length >= 2) {
-                    StringBuilder nameC = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
-                        nameC.append(args[i].toUpperCase()).append(" ");
-                    }
-                    nameC.deleteCharAt(nameC.lastIndexOf(" "));
-                    var buscado = Main.weapons.coloSkill(nameC.toString());
+                    String nameWeaponColo = getString(args);
+                    var buscado = Main.weapons.coloSkill(nameWeaponColo);
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaWeapons(event, stringStringHashMap);
                     }
@@ -204,12 +183,8 @@ public class Commands extends ListenerAdapter {
                 break;
             case Main.prefix + "NSA":
                 if (args.length >= 2) {
-                    StringBuilder nameS = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
-                        nameS.append(args[i].toUpperCase()).append(" ");
-                    }
-                    nameS.deleteCharAt(nameS.lastIndexOf(" "));
-                    var buscado = Main.armors.storySkill(nameS.toString());
+                    String armorStory = getString(args);
+                    var buscado = Main.armors.storySkill(armorStory);
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaArmor(event, stringStringHashMap);
                     }
@@ -217,16 +192,13 @@ public class Commands extends ListenerAdapter {
                 break;
             case Main.prefix + "NSET":
                 if (args.length >= 2) {
-                    StringBuilder nameC = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
-                        nameC.append(args[i].toUpperCase()).append(" ");
-                    }
-                    nameC.deleteCharAt(nameC.lastIndexOf(" "));
-                    var buscado = Main.armors.coloSkill(nameC.toString());
+                    String armorColo = getString(args);
+                    var buscado = Main.armors.coloSkill(armorColo);
                     for (HashMap<String, String> stringStringHashMap : buscado) {
                         MessageManager.pestanaArmor(event, stringStringHashMap);
                     }
                 }
+                break;
             case Main.prefix + "NC":
                 StringBuilder jobs = new StringBuilder();
                 String jobClass = null;
@@ -280,6 +252,18 @@ public class Commands extends ListenerAdapter {
                 break;
         }
 
+    }
+
+    @NotNull
+    private String getString(String[] args) {
+        StringBuilder name = new StringBuilder();
+        String pattern;
+        for (int i = 1; i < args.length; i++) {
+            name.append(args[i].toUpperCase()).append(" ");
+        }
+        name.deleteCharAt(name.lastIndexOf(" "));
+        pattern = name.toString();
+        return pattern;
     }
 
     public ArrayList<String> nightmarePattern(String buscado) {

@@ -17,7 +17,9 @@ public class MessageManager {
         info.setDescription("All content and materials are trademarks and copyrights of " +
                 "[Pokelabo Inc./SQUARE ENIX CO., LTD.] All rights reserved.");
         info.addField("Creator", "By KAN", false);
-        info.addField("Version", "1.5.1", false);
+        info.addField("Version", "1.0", false);
+        info.addField("acknowledgment to", "gn.draw (search his instagram), ultima, Radzinskys0雷, colossi, Trickstar BlackLôtus\n," +
+                " and all people what send me a message, THANKS!", false);
         info.setColor(Color.cyan);
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(info.build()).queue();
@@ -28,107 +30,106 @@ public class MessageManager {
         helper.setTitle("Helper");
         helper.setImage("https://i.redd.it/lljcy3vj9ei51.png");
         helper.setDescription("**All commands:**"
-                + "\n" + "```!helper```"
-                + "```!info```"
-                + "```!nightmares [all/Pattern to find]```"
-                + "```!searchN [number / nightmare's name]```"
-                + "```!maxN```"
-                + "```!armors [all/Pattern to find]```"
-                + "```!searchA [number / Armor's name]```"
-                + "```!arm [element][Type](Stat)(number of elements)(optional)```"
+                + "\n" + "```!h```"
+                + "```!i```"
+                + "```!n [all/Pattern to find]```"
+                + "```!nn [number / nightmare's name]```"
+                + "```!mn```"
+                + "```!a [all/Pattern to find]```"
+                + "```!na [number / Armor's name]```"
+                + "```!ea [element][Type](Stat)(number of elements)(optional)```"
                 + "```!weapons [all/Pattern to find]```"
                 + "```!searchW [number / Weapon's name]```"
-                + "```!wpn [element][Type](Stat)(number of elements)(optional)```"
-                + "```!storyN [name of skill]```"
-                + "```!coloN [name of skill]```"
-                + "```!aidW [name of skill]```"
-                + "```!coloW [name of skill]```"
-                + "```!storyA [name of skill]```"
-                + "```!setEfect [name of skill]```"
-                + "```!class [name of pj](job)```"
+                + "```!ew [element][Type](Stat)(number of elements)(optional)```"
+                + "```!sn [name of skill]```"
+                + "```!ncn [name of skill]```"
+                + "```!ncsw [name of skill]```"
+                + "```!ncw [name of skill]```"
+                + "```!nsa [name of skill]```"
+                + "```!nset [name of skill]```"
+                + "```!nc [name of pj](job)```"
         );
-        helper.addField("!helper", "```Show all commands.```", false);
-        helper.addField("!info", "```Show all information of bot.```", false);
-        helper.addField("!nightmares", "```Show all nightmares and it's number or matched with a user input (Pattern)."
+        helper.addField("!h", "```Show all commands.```", false);
+        helper.addField("!i", "```Show all information of bot.```", false);
+        helper.addField("!n", "```Show all nightmares and it's number or matched with a user input (Pattern)."
                 + "\n" + "Examples:"
-                + "\n" + "!nightmares All"
-                + "\n" + "!nightmares hound"
-                + "\n" + "!nightmares Real Lizard"
-                + "\n" + "!nightmares orc```", false);
-        helper.addField("!armors", "```Show all armors names and it's number or matched with a user input (Pattern)."
+                + "\n" + "!n (Show all nightmares)"
+                + "\n" + "!n hound"
+                + "\n" + "!n Real Lizard"
+                + "\n" + "!n orc```", false);
+        helper.addField("!a", "```Show all armors names and it's number or matched with a user input (Pattern)."
                 + "\n" + "Examples:"
-                + "\n" + "!armors All"
-                + "\n" + "!armors golden"
-                + "\n" + "!armors Schoolgirl```", false);
-        helper.addField("!weapons", "```Show all weapons names and it's number or matched with a user input (Pattern)"
+                + "\n" + "!a"
+                + "\n" + "!a golden"
+                + "\n" + "!a Schoolgirl```", false);
+        helper.addField("!w", "```Show all weapons names and it's number or matched with a user input (Pattern)"
                 + "\n" + "Examples:"
-                + "\n" + "!weapons All"
-                + "\n" + "!weapons staff"
-                + "\n" + "!weapons Book of Observation```", false);
-        helper.addField("!searchN", "```Search one nightmare by its number/name or matched with a user input."
-                + "\n" + "!searchN 1" + "\n" +
-                "!searchN Flying Magician" +
-                "\n!searchN 148" +
-                "\n!searchN UGALLU```", false);
-        helper.addField("!searchA", "```Search one armor by its number/name."
-                + "\n" + "\nExamples: \n!searchA 1"
-                + "\n" + "!searchA Nameless Youth's Hairband (Projectile)"
-                + "\n" + "!SearchA 31"
-                + "\n" + "!SearchA Nameless Youth's Shoes (Blade)```", false);
-        helper.addField("!searchW", "```Search one weapon by it's number/name."
-                + "\n" + "!searchW 1" + "\n"
-                + "!searchW Origin of Truth"
-                + "\n" + "!SearchW 387"
-                + "\n" + "!SearchW War Song's Echo```", false);
-        helper.addField("!MaxN", "```Show the nightmare with the highest points.```", false);
-        helper.addField("!Arm", "```Show all armors filtered by it's element [fire/wind/water/humans] and type [head/body/hands/feet]."
+                + "\n" + "!w"
+                + "\n" + "!w staff"
+                + "\n" + "!w Book of Observation```", false);
+        helper.addField("!nn", "```Search one nightmare by its number/name or matched with a user input."
+                + "\n" + "!nn 1" + "\n" +
+                "!nn Flying Magician" +
+                "\n!nn 148" +
+                "\n!nn UGALLU```", false);
+        helper.addField("!na", "```Search one armor by its number/name."
+                + "\n" + "\nExamples: \n!na 1"
+                + "\n" + "!na Nameless Youth's Hairband (Projectile)"
+                + "\n" + "!na 31"
+                + "\n" + "!na Nameless Youth's Shoes (Blade)```", false);
+        helper.addField("!nw", "```Search one weapon by it's number/name."
+                + "\n" + "!nw 1" + "\n"
+                + "!nw Origin of Truth"
+                + "\n" + "!nw 387"
+                + "\n" + "!nw War Song's Echo```", false);
+        helper.addField("!mn", "```Show the nightmare with the highest points.```", false);
+        helper.addField("!ea", "```Show all armors filtered by it's element [fire/wind/water/humans] and type [head/body/hands/feet]."
                 + "\n" +
                 "\nExamples:" + "\n" + "!Arm wind body" +
-                "\n!Arm wind Head PDEF " +
-                "\n!Arm wind Hands MDEF 1" +
-                "\n!Arm wind Feet SETTOTAL 5```", false);
-        helper.addField("!Wpn", "```Show all weapons filtered by it's element [fire/wind/water] and type [Instr./polearm/blade/tome/focus/staff/hammer/ranged]."
+                "\n!ea wind Head PDEF " +
+                "\n!ea wind Hands MDEF 1" +
+                "\n!ea wind Feet SETTOTAL 5```", false);
+        helper.addField("!ew", "```Show all weapons filtered by it's element [fire/wind/water] and type [Instr./polearm/blade/tome/focus/staff/hammer/ranged]."
                 + "\n" + "\nExamples:" + "\n!Wpn wind polearm" +
-                "\n!Wpn wind Instr. PATK" +
-                "\n!Wpn wind polearm PDEF" +
-                "\n!Wpn wind blade MATK" +
-                "\n!Wpn wind Tome MDEF" +
-                "\n!Wpn wind focus TTATK 1" +
-                "\n!Wpn wind Staff TTATK 2" +
-                "\n!Wpn wind Hammer TTDEF 3" +
-                "\n!Wpn wind Ranged PATKTTDEF 4" +
-                "\n!Wpn wind Instr. MATKTTDEF 5```", false);
-        helper.addField("!storyN", "```Show all nightmares with the Story Skill searched."
-                + "\n" + "\nExamples:" + "\n!StoryN Blazing Wildfire (I)" +
-                "\n!StoryN Lover's Embrace (II)" +
-                "\n!StoryN Song of Camaraderie (II)" +
-                "\n!StoryN Engulfing```", false);
-        helper.addField("!coloN", "```Show all nightmares with the Colosseum Skill searched."
-                + "\n" + "\nExamples:" + "\n!coloN Zephyr Fairy Mastery (II)" +
-                "\n!coloN Zephyr" +
-                "\n!coloN Tidal Fairy Master (I)" +
-                "\n!coloN Tidal Fairy```", false);
-        helper.addField("!aidW", "```Show all weapons with the aid Skill searched."
-                + "\n" + "\nExamples:" + "\n!aidW Replenish Magic (II)" +
-                "\n!aidW M.ATK Debuff (I)" +
-                "\n!aidW Replenish Magic (I)" +
-                "\n!aidW Support```", false);
-        helper.addField("!coloW", "```Show all weapons with the Colosseum Skill searched."
-                + "\n" + "\nExamples:" + "\n!coloW Zephyr Fairy Mastery (II)" +
-                "\n!coloW Torrent of Destruction (III)" +
-                "\n!coloW Blessed Gospel (III)" +
-                "\n!coloW Wave```", false);
-        helper.addField("!storyA", "```Show all armor with the Story Skill searched."
-                + "\n" + "\nExamples:" + "\n!StoryA Blazing Wildfire (I)" +
-                "\n!StoryA Instrument Merit" +
-                "\n!StoryA Ranged Water Soul" +
-                "\n!StoryA Ranged Water Soul```", false);
-        helper.addField("!setEfect", "```Show all armor with the set effect searched."
-                + "\n" + "\nExamples:" + "\n!coloA Zephyr Fairy Mastery (II)" +
-                "\n!coloA Human Hunter's Soul" +
-                "\n!coloA Hunter's Soul" +
-                "\n!coloA Machine Lifeform and Emil's Hunting Spirit```", false);
-        helper.addField("!class", "```Show jobs with the name's pj and job.\n"
+                "\n!ew wind Instr. PATK" +
+                "\n!ew wind polearm PDEF" +
+                "\n!ew wind blade MATK" +
+                "\n!ew wind Tome MDEF" +
+                "\n!ew wind focus TTATK 1" +
+                "\n!ew wind Staff TTATK 2" +
+                "\n!ew wind Hammer TTDEF 3" +
+                "\n!ew wind Ranged PATKTTDEF 4" +
+                "\n!ew wind Instr. MATKTTDEF 5```", false);
+        helper.addField("!nsn", "```Show all nightmares with the Story Skill searched."
+                + "\n" + "\nExamples:" + "\n!nsn Blazing Wildfire (I)" +
+                "\n!nsn Lover's Embrace (II)" +
+                "\n!nsn Song of Camaraderie (II)" +
+                "\n!nsn Engulfing```", false);
+        helper.addField("!ncn", "```Show all nightmares with the Colosseum Skill searched."
+                + "\n" + "\nExamples:" + "\n!ncn Zephyr Fairy Mastery (II)" +
+                "\n!ncn Zephyr" +
+                "\n!ncn Tidal Fairy Master (I)" +
+                "\n!ncn Tidal Fairy```", false);
+        helper.addField("!ncsw", "```Show all weapons with the aid Skill searched."
+                + "\n" + "\nExamples:" + "\n!ncsw Replenish Magic (II)" +
+                "\n!ncsw M.ATK Debuff (I)" +
+                "\n!ncsw Replenish Magic (I)" +
+                "\n!ncsw Support```", false);
+        helper.addField("!ncw", "```Show all weapons with the Colosseum Skill searched."
+                + "\n" + "\nExamples:" + "\n!ncw Zephyr Fairy Mastery (II)" +
+                "\n!ncw Torrent of Destruction (III)" +
+                "\n!ncw Blessed Gospel (III)```", false);
+        helper.addField("!nsa", "```Show all armor with the Story Skill searched."
+                + "\n" + "\nExamples:" +
+                "\n!nsa Instrument Merit" +
+                "\n!nsa Ranged Water Soul" +
+                "\n!nsa Ranged Water Soul```", false);
+        helper.addField("!nset", "```Show all armor with the set effect searched."
+                + "\n" + "\nExamples:" +
+                "\n!nset Human Hunter's Soul" +
+                "\n!nset Hunter's Soul" +
+                "\n!nset Machine Lifeform and Emil's Hunting Spirit```", false);
+        helper.addField("!nc", "```Show jobs with the name's pj and job.\n"
                 + "\nPjs:\n" +
                 "Alice, Snow White, Red Riding Hood,\n" +
                 "Cinderella, Pinocchio, Little Mermaid,\n" +
@@ -144,10 +145,10 @@ public class MessageManager {
                 + "Cleric, Paladin, Breaker, Invader,\n"
                 + "Poacher and Crusher."
                 + "\n" + "\nExamples:" +
-                "\n!class 2b" +
-                "\n!class 2b breaker" +
-                "\n!class alice " +
-                "\n!class alice Alternative```", false);
+                "\n!nc 2b" +
+                "\n!nc 2b breaker" +
+                "\n!nc alice " +
+                "\n!nc alice Alternative```", false);
         helper.setColor(Color.pink);
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(helper.build()).queue();

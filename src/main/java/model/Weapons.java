@@ -72,12 +72,12 @@ public class Weapons {
         dicWeapon.put("TTDEF", tTDef);
         dicWeapon.put("PATKTTDEF", pAtkTTdef);
         dicWeapon.put("MATKTTDEF", mAtkTtDef);
-        dicWeapon.put("STORYSKILL", skillStory);
-        dicWeapon.put("SKILL", skill);
-        dicWeapon.put("NAMECOLO", nameColoSkill);
+        dicWeapon.put("STORYSKILL", skillStory.trim());
+        dicWeapon.put("SKILL", skill.trim());
+        dicWeapon.put("NAMECOLO", nameColoSkill.trim());
         dicWeapon.put("COLOSKILL", coloSkill);
         dicWeapon.put("ELEMENT", element);
-        dicWeapon.put("NAMEAID", nameAid);
+        dicWeapon.put("NAMEAID", nameAid.trim());
         dicWeapon.put("AID", aidskill);
         dicWeapon.put("IMG", img);
         dicWeapon.put("COST", cost);
@@ -143,7 +143,7 @@ public class Weapons {
 
         ArrayList<HashMap<String, String>> array = new ArrayList<>();
         for (HashMap<String, String> stringStringHashMap : weapons) {
-            if (stringStringHashMap.get("AID").contains(aidskill.toUpperCase())) {
+            if (stringStringHashMap.get("NAMEAID").contains(aidskill.toUpperCase())) {
                 array.add(stringStringHashMap);
             }
         }

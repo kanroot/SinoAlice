@@ -63,9 +63,9 @@ public class Nigthmares {
         dicNightmare.put("TOTALMAXLEV", maxTotal);
         dicNightmare.put("FULLLVL", fullLvl);
         dicNightmare.put("SKILL", skill);
-        dicNightmare.put("NAMESTORY", nameStorySkill);
+        dicNightmare.put("NAMESTORY", nameStorySkill.trim());
         dicNightmare.put("COLOSKILL", coloSkill);
-        dicNightmare.put("NAMECOLO", nameColo);
+        dicNightmare.put("NAMECOLO", nameColo.trim());
         //otros
         dicNightmare.put("TTATK", ttatk);
         dicNightmare.put("TTDEF", ttDef);

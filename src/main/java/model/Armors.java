@@ -62,9 +62,9 @@ public class Armors {
         dicArmor.put("MDEF", mDef);
         dicArmor.put("TOTAL", total);
         dicArmor.put("SKILL", skill);
-        dicArmor.put("NAMESKILL", nameSkill);
+        dicArmor.put("NAMESKILL", nameSkill.trim());
         dicArmor.put("COLOSKILL", coloSkill);
-        dicArmor.put("NAMECOLO", nameColo);
+        dicArmor.put("NAMECOLO", nameColo.trim());
         dicArmor.put("ELEMENT", element);
         dicArmor.put("SETTOTAL", settotal);
         dicArmor.put("IMG", img);
@@ -138,7 +138,7 @@ public class Armors {
 
         ArrayList<HashMap<String, String>> array = new ArrayList<>();
         for (HashMap<String, String> stringStringHashMap : armor) {
-            if (stringStringHashMap.get("NAMECOLO").contains(coloSkill.toUpperCase())) {
+            if (stringStringHashMap.get("NAMECOLO").equalsIgnoreCase(coloSkill.toUpperCase())) {
                 array.add(stringStringHashMap);
             }
         }
