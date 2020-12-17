@@ -19,20 +19,20 @@ public class Commands extends ListenerAdapter {
 
         String opc = args[0].toUpperCase();
         switch (opc) {
-            case Main.prefix + "HELPER":
+            case Main.prefix + "H":
                 MessageManager.help(event);
                 break;
-            case Main.prefix + "INFO":
+            case Main.prefix + "I":
                 MessageManager.info(event);
                 break;
-            case Main.prefix + "NIGHTMARES":
-                if (args[1].equalsIgnoreCase("all")) {
+            case Main.prefix + "N":
+                if (args.length == 1) {
                     MessageManager.createList(event, nightmarePattern(" "), "All names of nightmares");
                 } else {
                     MessageManager.createList(event, nightmarePattern(args[1]), "Matched");
                 }
                 break;
-            case Main.prefix + "SEARCHN":
+            case Main.prefix + "NN":
                 StringBuilder name = new StringBuilder();
                 if (args.length > 2) {
                     for (int i = 1; i < args.length; i++) {
@@ -44,20 +44,20 @@ public class Commands extends ListenerAdapter {
                 }
                 searchNightmare(event, name.toString());
                 break;
-            case Main.prefix + "MAXN":
+            case Main.prefix + "MN":
                 var point = Main.nigthmares.point();
                 for (HashMap<String, String> stringStringHashtable : point) {
                     MessageManager.pestanaNightmare(event, stringStringHashtable);
                 }
                 break;
-            case Main.prefix + "ARMORS":
-                if (args[1].equalsIgnoreCase("all")) {
+            case Main.prefix + "A":
+                if (args.length == 1) {
                     MessageManager.createList(event, armorsfind(" "), "All armors");
                 } else {
                     MessageManager.createList(event, armorsfind(args[1]), "Matched");
                 }
                 break;
-            case Main.prefix + "SEARCHA":
+            case Main.prefix + "NA":
                 StringBuilder nameA = new StringBuilder();
                 if (args.length > 2) {
                     for (int i = 1; i < args.length; i++) {
@@ -69,13 +69,13 @@ public class Commands extends ListenerAdapter {
                 }
                 searchA(event, nameA.toString());
                 break;
-            case Main.prefix + "MAXA":
+            case Main.prefix + "MA":
                 var pointA = Main.armors.point();
                 for (HashMap<String, String> stringStringHashtable : pointA) {
                     MessageManager.pestanaArmor(event, stringStringHashtable);
                 }
 
-            case Main.prefix + "ARM":
+            case Main.prefix + "EA":
                 if (args.length == 3) {
                     var buscado = Main.armors.filtroElemType(args[1], args[2], "TOTAL");
                     for (HashMap<String, String> stringStringHashtable : buscado) {
@@ -101,14 +101,14 @@ public class Commands extends ListenerAdapter {
                     }
                 }
                 break;
-            case Main.prefix + "WEAPONS":
+            case Main.prefix + "W":
                 if (args[1].equalsIgnoreCase("all")) {
                     MessageManager.createList(event, weaponsfind(" "), "Matched");
                 } else {
                     MessageManager.createList(event, weaponsfind(args[1]), "Matched");
                 }
                 break;
-            case Main.prefix + "SEARCHW":
+            case Main.prefix + "NW":
                 StringBuilder nameW = new StringBuilder();
                 if (args.length > 2) {
                     for (int i = 1; i < args.length; i++) {
@@ -120,13 +120,13 @@ public class Commands extends ListenerAdapter {
                 }
                 searchW(event, nameW.toString());
                 break;
-            case Main.prefix + "MAXW":
+            case Main.prefix + "MW":
                 var pointW = Main.weapons.point();
                 for (HashMap<String, String> stringStringHashtable : pointW) {
                     MessageManager.pestanaWeapons(event, stringStringHashtable);
                 }
                 break;
-            case Main.prefix + "WPN":
+            case Main.prefix + "EW":
                 if (args.length == 3) {
                     var buscado = Main.weapons.filtroElemType(args[1], args[2], "TOTAL");
                     for (HashMap<String, String> stringStringHashtable : buscado) {
@@ -150,7 +150,7 @@ public class Commands extends ListenerAdapter {
                     }
                 }
                 break;
-            case Main.prefix + "STORYN":
+            case Main.prefix + "NSN":
                 if (args.length >= 2) {
                     StringBuilder nameS = new StringBuilder();
                     for (int i = 1; i < args.length; i++) {
@@ -163,7 +163,7 @@ public class Commands extends ListenerAdapter {
                     }
                 }
                 break;
-            case Main.prefix + "COLON":
+            case Main.prefix + "NCN":
                 if (args.length >= 2) {
                     StringBuilder nameC = new StringBuilder();
                     for (int i = 1; i < args.length; i++) {
@@ -176,7 +176,7 @@ public class Commands extends ListenerAdapter {
                     }
                 }
                 break;
-            case Main.prefix + "AIDW":
+            case Main.prefix + "NCSW":
                 if (args.length >= 2) {
                     StringBuilder nameS = new StringBuilder();
                     for (int i = 1; i < args.length; i++) {
@@ -189,7 +189,7 @@ public class Commands extends ListenerAdapter {
                     }
                 }
                 break;
-            case Main.prefix + "COLOW":
+            case Main.prefix + "NCW":
                 if (args.length >= 2) {
                     StringBuilder nameC = new StringBuilder();
                     for (int i = 1; i < args.length; i++) {
@@ -202,7 +202,7 @@ public class Commands extends ListenerAdapter {
                     }
                 }
                 break;
-            case Main.prefix + "STORYA":
+            case Main.prefix + "NSA":
                 if (args.length >= 2) {
                     StringBuilder nameS = new StringBuilder();
                     for (int i = 1; i < args.length; i++) {
@@ -215,7 +215,7 @@ public class Commands extends ListenerAdapter {
                     }
                 }
                 break;
-            case Main.prefix + "SETEFFECT":
+            case Main.prefix + "NSET":
                 if (args.length >= 2) {
                     StringBuilder nameC = new StringBuilder();
                     for (int i = 1; i < args.length; i++) {
@@ -227,7 +227,7 @@ public class Commands extends ListenerAdapter {
                         MessageManager.pestanaArmor(event, stringStringHashMap);
                     }
                 }
-            case Main.prefix + "CLASS":
+            case Main.prefix + "NC":
                 StringBuilder jobs = new StringBuilder();
                 String jobClass = null;
                 String nameJob = null;
