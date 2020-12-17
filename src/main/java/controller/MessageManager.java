@@ -20,6 +20,8 @@ public class MessageManager {
         info.addField("Version", "1.0", false);
         info.addField("acknowledgment to", "gn.draw (search his instagram), ultima, Radzinskys0雷, colossi, Trickstar BlackLôtus\n," +
                 " and all people what send me a message, THANKS!", false);
+        info.addField("Donatios", "If you wanna a feature, or for better servers, or only for love," +
+                " please let me know with your sino-love:\n" + "https://ko-fi.com/rootkan",false);
         info.setColor(Color.cyan);
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(info.build()).queue();
@@ -43,10 +45,6 @@ public class MessageManager {
                 + "```!ew [element][Type](Stat)(number of elements)(optional)```"
                 + "```!sn [name of skill]```"
                 + "```!ncn [name of skill]```"
-                + "```!ncsw [name of skill]```"
-                + "```!ncw [name of skill]```"
-                + "```!nsa [name of skill]```"
-                + "```!nset [name of skill]```"
                 + "```!nc [name of pj](job)```"
         );
         helper.addField("!h", "```Show all commands.```", false);
@@ -59,12 +57,12 @@ public class MessageManager {
                 + "\n" + "!n orc```", false);
         helper.addField("!a", "```Show all armors names and it's number or matched with a user input (Pattern)."
                 + "\n" + "Examples:"
-                + "\n" + "!a"
+                + "\n" + "!a (Show all armors)"
                 + "\n" + "!a golden"
                 + "\n" + "!a Schoolgirl```", false);
         helper.addField("!w", "```Show all weapons names and it's number or matched with a user input (Pattern)"
                 + "\n" + "Examples:"
-                + "\n" + "!w"
+                + "\n" + "!w (Show all weapons)"
                 + "\n" + "!w staff"
                 + "\n" + "!w Book of Observation```", false);
         helper.addField("!nn", "```Search one nightmare by its number/name or matched with a user input."
@@ -90,7 +88,7 @@ public class MessageManager {
                 "\n!ea wind Hands MDEF 1" +
                 "\n!ea wind Feet SETTOTAL 5```", false);
         helper.addField("!ew", "```Show all weapons filtered by it's element [fire/wind/water] and type [Instr./polearm/blade/tome/focus/staff/hammer/ranged]."
-                + "\n" + "\nExamples:" + "\n!Wpn wind polearm" +
+                + "\n" + "\nExamples:" + "\n!ew wind polearm" +
                 "\n!ew wind Instr. PATK" +
                 "\n!ew wind polearm PDEF" +
                 "\n!ew wind blade MATK" +
@@ -110,25 +108,6 @@ public class MessageManager {
                 "\n!ncn Zephyr" +
                 "\n!ncn Tidal Fairy Master (I)" +
                 "\n!ncn Tidal Fairy```", false);
-        helper.addField("!ncsw", "```Show all weapons with the aid Skill searched."
-                + "\n" + "\nExamples:" + "\n!ncsw Replenish Magic (II)" +
-                "\n!ncsw M.ATK Debuff (I)" +
-                "\n!ncsw Replenish Magic (I)" +
-                "\n!ncsw Support```", false);
-        helper.addField("!ncw", "```Show all weapons with the Colosseum Skill searched."
-                + "\n" + "\nExamples:" + "\n!ncw Zephyr Fairy Mastery (II)" +
-                "\n!ncw Torrent of Destruction (III)" +
-                "\n!ncw Blessed Gospel (III)```", false);
-        helper.addField("!nsa", "```Show all armor with the Story Skill searched."
-                + "\n" + "\nExamples:" +
-                "\n!nsa Instrument Merit" +
-                "\n!nsa Ranged Water Soul" +
-                "\n!nsa Ranged Water Soul```", false);
-        helper.addField("!nset", "```Show all armor with the set effect searched."
-                + "\n" + "\nExamples:" +
-                "\n!nset Human Hunter's Soul" +
-                "\n!nset Hunter's Soul" +
-                "\n!nset Machine Lifeform and Emil's Hunting Spirit```", false);
         helper.addField("!nc", "```Show jobs with the name's pj and job.\n"
                 + "\nPjs:\n" +
                 "Alice, Snow White, Red Riding Hood,\n" +
@@ -149,6 +128,8 @@ public class MessageManager {
                 "\n!nc 2b breaker" +
                 "\n!nc alice " +
                 "\n!nc alice Alternative```", false);
+        helper.setFooter("If you wanna a feature, or for better servers, or only for love," + " please let me know with your sino-love:\n"
+                + "https://ko-fi.com/rootkan");
         helper.setColor(Color.pink);
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(helper.build()).queue();
