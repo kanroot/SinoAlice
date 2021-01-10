@@ -17,8 +17,8 @@ public class MessageManager {
         info.setDescription("All content and materials are trademarks and copyrights of " +
                 "[Pokelabo Inc./SQUARE ENIX CO., LTD.] All rights reserved.");
         info.addField("Creator", "By KAN", false);
-        info.addField("Version", "1.0", false);
-        info.addField("acknowledgment to", "gn.draw (search his instagram), ultima, Radzinskys0雷, colossi, Trickstar BlackLôtus\n," +
+        info.addField("Version", "1.5", false);
+        info.addField("acknowledgment to", "Gilles, gn.draw (search his instagram), ultima, Radzinskys0雷, colossi, Trickstar BlackLôtus\n," +
                 " and all people what send me a message, THANKS!", false);
         info.addField("Donatios", "If you wanna a feature, or for better servers, or only for love," +
                 " please let me know with your sino-love:\n" + "https://ko-fi.com/rootkan",false);
@@ -40,8 +40,6 @@ public class MessageManager {
                 + "```!a [all/Pattern to find]```"
                 + "```!na [number / Armor's name]```"
                 + "```!ea [element][Type](Stat)(number of elements)(optional)```"
-                + "```!weapons [all/Pattern to find]```"
-                + "```!searchW [number / Weapon's name]```"
                 + "```!ew [element][Type](Stat)(number of elements)(optional)```"
                 + "```!sn [name of skill]```"
                 + "```!ncn [name of skill]```"
@@ -201,10 +199,10 @@ public class MessageManager {
                 + "\n" + hashMap.get("NAMECOLO") + ": "
                 + hashMap.get("COLOSKILL") + "```"
                 + "```ELM" + "\n" + "Element: " + hashMap.get("ELEMENT")
-                + "\t" + "Type: " + hashMap.get("TYPE")
-                + "\t" + "P.Def: " + hashMap.get("PDEF")
-                + "\t" + "M.Def: " + hashMap.get("MDEF")
-                + "\t" + "Total: " + hashMap.get("TOTAL") + "```" + "```YAML"
+                + "\t" + "Type: " + hashMap.get("TYPE") + "```" + "```ELM"
+                + "\n" + "P.Def: " + hashMap.get("PDEF")
+                + "\t" + "M.Def: " + hashMap.get("MDEF") + "```" + "```ELM"
+                + "\n" + "Total: " + hashMap.get("TOTAL") + "```" + "```YAML"
                 + "\n" + "Set total: " + hashMap.get("SETTOTAL") + "```";
         jdaStandard(title, url, description, jdaColor(hashMap.get("ELEMENT")), event);
     }
