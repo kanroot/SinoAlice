@@ -3,6 +3,7 @@ package view;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import controller.ErrorManager;
 import controller.MessageManager;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -250,6 +251,11 @@ public class Commands extends ListenerAdapter {
                     }
                 }
                 break;
+            default:
+                if (args[0].startsWith("!")){
+                    ErrorManager.errorCommand(event);
+                }
+
         }
 
     }
@@ -280,11 +286,20 @@ public class Commands extends ListenerAdapter {
     private void searchNightmare(MessageReceivedEvent event, String arg) {
         try {
             var point = Main.nigthmares.buscar(Integer.parseInt(arg));
-            MessageManager.pestanaNightmare(event, point);
+            if (point.size() > 0) {
+                MessageManager.pestanaNightmare(event, point);
+            }else {
+                ErrorManager.errorNightmare(event);
+            }
+
         } catch (NumberFormatException e) {
             e.printStackTrace();
             var point = Main.nigthmares.buscar(arg);
-            MessageManager.pestanaNightmare(event, point);
+            if (point.size() > 0) {
+                MessageManager.pestanaNightmare(event, point);
+            }else {
+                ErrorManager.errorNightmare(event);
+            }
         }
     }
 
@@ -302,11 +317,20 @@ public class Commands extends ListenerAdapter {
     private void searchA(MessageReceivedEvent event, String arg) {
         try {
             var armorSearched = Main.armors.buscar(Integer.parseInt(arg));
-            MessageManager.pestanaArmor(event, armorSearched);
+            if (armorSearched.size() > 0) {
+                MessageManager.pestanaArmor(event, armorSearched);
+            } else {
+                ErrorManager.errorArmor(event);
+            }
+
         } catch (NumberFormatException e) {
-            var armorSearched = Main.armors.buscar(arg);
-            MessageManager.pestanaArmor(event, armorSearched);
             e.printStackTrace();
+            var armorSearched = Main.armors.buscar(arg);
+            if (armorSearched.size() > 0) {
+                MessageManager.pestanaArmor(event, armorSearched);
+            } else {
+                ErrorManager.errorArmor(event);
+            }
         }
     }
 
@@ -324,10 +348,18 @@ public class Commands extends ListenerAdapter {
     private void searchW(MessageReceivedEvent event, String arg2) {
         try {
             var buscado = Main.weapons.buscar(Integer.parseInt(arg2));
-            MessageManager.pestanaWeapons(event, buscado);
+            if(buscado.size() > 0){
+                MessageManager.pestanaWeapons(event, buscado);
+            }else {
+                ErrorManager.errorWeapon(event);
+            }
         } catch (NumberFormatException e) {
             var buscado = Main.weapons.buscar(arg2);
-            MessageManager.pestanaWeapons(event, buscado);
+            if(buscado.size() > 0){
+                MessageManager.pestanaWeapons(event, buscado);
+            }else {
+                ErrorManager.errorWeapon(event);
+            }
         }
     }
 }//fin del listener

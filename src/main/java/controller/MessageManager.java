@@ -17,7 +17,7 @@ public class MessageManager {
         info.setDescription("All content and materials are trademarks and copyrights of " +
                 "[Pokelabo Inc./SQUARE ENIX CO., LTD.] All rights reserved.");
         info.addField("Creator", "By KAN", false);
-        info.addField("Version", "1.5", false);
+        info.addField("Version", "1.6", false);
         info.addField("acknowledgment to", "Gilles, gn.draw (search his instagram), ultima, Radzinskys0雷, colossi, Trickstar BlackLôtus\n," +
                 " and all people what send me a message, THANKS!", false);
         info.addField("Donatios", "If you wanna a feature, or for better servers, or only for love," +
@@ -26,6 +26,7 @@ public class MessageManager {
         event.getChannel().sendTyping().queue();
         event.getChannel().sendMessage(info.build()).queue();
     }
+
 
     public static void help(MessageReceivedEvent event) {
         EmbedBuilder helper = new EmbedBuilder();
@@ -170,9 +171,9 @@ public class MessageManager {
                 hashMap.get("COLOSKILL") + "```" + "\n" +
                 "**Level**: " + hashMap.get("LVL") + "```ELM"
                 + "\n" + "P.Atk: " + hashMap.get("PATK")
-                + "\t" + "P.Atk: " + hashMap.get("PDEF")
+                + "\t" + "P.Def: " + hashMap.get("PDEF")
                 + "\t" + "M.Atk: " + hashMap.get("MATK")
-                + "\t" + "M.Atk: " + hashMap.get("MDEF")
+                + "\t" + "M.Def: " + hashMap.get("MDEF")
                 + "\t" + "Total: " + hashMap.get("TOTAL") + "```"
                 + "\n" + "**Level**: " + hashMap.get("FULLLVL") + "```ELM"
                 + "\n" + "P.Akt: " + hashMap.get("PAKTOTAL")
