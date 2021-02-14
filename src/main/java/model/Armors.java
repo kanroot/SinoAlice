@@ -102,7 +102,13 @@ public class Armors {
     }
 
     public HashMap<String, String> buscar(int buscado) {
-        return armor.get(buscado - 1);
+        try {
+            return armor.get(buscado - 1);
+        } catch (IndexOutOfBoundsException e) {
+            return new HashMap<>();
+
+        }
+
     }
 
     public ArrayList<HashMap<String, String>> point() {

@@ -104,8 +104,13 @@ public class Weapons {
     }
 
     public HashMap<String, String> buscar(int buscado) {
+        try {
+            return weapons.get(buscado - 1);
 
-        return weapons.get(buscado - 1);
+        } catch (IndexOutOfBoundsException e) {
+            return new HashMap<>();
+
+        }
     }
 
     public ArrayList<HashMap<String, String>> filtroElemType(String element, String type, String filtro) {

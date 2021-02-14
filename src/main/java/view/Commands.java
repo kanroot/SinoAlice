@@ -289,7 +289,7 @@ public class Commands extends ListenerAdapter {
             if (point.size() > 0) {
                 MessageManager.pestanaNightmare(event, point);
             }else {
-                ErrorManager.errorNightmare(event);
+                ErrorManager.errorNightmareNumber(event);
             }
 
         } catch (NumberFormatException e) {
@@ -320,7 +320,7 @@ public class Commands extends ListenerAdapter {
             if (armorSearched.size() > 0) {
                 MessageManager.pestanaArmor(event, armorSearched);
             } else {
-                ErrorManager.errorArmor(event);
+                ErrorManager.errorArmorNumber(event);
             }
 
         } catch (NumberFormatException e) {
@@ -351,7 +351,7 @@ public class Commands extends ListenerAdapter {
             if(buscado.size() > 0){
                 MessageManager.pestanaWeapons(event, buscado);
             }else {
-                ErrorManager.errorWeapon(event);
+                ErrorManager.errorWeaponNumber(event);
             }
         } catch (NumberFormatException e) {
             var buscado = Main.weapons.buscar(arg2);

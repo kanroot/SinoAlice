@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Nigthmares {
 
+
     public Nigthmares() {
         generarNightmare();
     }
@@ -97,8 +98,13 @@ public class Nigthmares {
     }
 
     public HashMap<String, String> buscar(int buscado) {
+        try {
+            return night.get(buscado - 1);
+        }catch (IndexOutOfBoundsException e){
+            return new HashMap<>();
+        }
 
-        return night.get(buscado - 1);
+
     }
 
 
